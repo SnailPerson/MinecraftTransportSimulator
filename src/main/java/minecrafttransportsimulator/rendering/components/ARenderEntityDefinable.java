@@ -9,17 +9,24 @@ import java.util.Map.Entry;
 import minecrafttransportsimulator.baseclasses.AnimationSwitchbox;
 import minecrafttransportsimulator.baseclasses.BoundingBox;
 import minecrafttransportsimulator.baseclasses.ColorRGB;
+import minecrafttransportsimulator.baseclasses.Point3D;
 import minecrafttransportsimulator.baseclasses.RotationMatrix;
 import minecrafttransportsimulator.baseclasses.TransformationMatrix;
 import minecrafttransportsimulator.entities.components.AEntityD_Definable;
 import minecrafttransportsimulator.entities.components.AEntityE_Interactable;
 import minecrafttransportsimulator.entities.components.AEntityF_Multipart;
+import minecrafttransportsimulator.items.components.AItemBase;
+import minecrafttransportsimulator.items.components.AItemPart;
 import minecrafttransportsimulator.items.instances.ItemInstrument;
 import minecrafttransportsimulator.jsondefs.AJSONMultiModelProvider;
 import minecrafttransportsimulator.jsondefs.JSONInstrumentDefinition;
+import minecrafttransportsimulator.jsondefs.JSONItem.ItemComponentType;
+import minecrafttransportsimulator.jsondefs.JSONPartDefinition;
 import minecrafttransportsimulator.jsondefs.JSONRendering.ModelType;
 import minecrafttransportsimulator.jsondefs.JSONSubDefinition;
 import minecrafttransportsimulator.jsondefs.JSONText;
+import minecrafttransportsimulator.mcinterface.IWrapperPlayer;
+import minecrafttransportsimulator.mcinterface.InterfaceManager;
 import minecrafttransportsimulator.rendering.instances.RenderInstrument;
 import minecrafttransportsimulator.rendering.instances.RenderText;
 
@@ -141,6 +148,51 @@ public abstract class ARenderEntityDefinable<RenderedEntity extends AEntityD_Def
 			super.renderBoundingBoxes(entity, transform);
 		}
 	}
+	
+	@Override
+    protected void renderHolographicBoxes(RenderedEntity entity, TransformationMatrix transform){
+	    if(entity instanceof AEntityF_Multipart) {
+            //If we are holding a part, render the valid slots.
+            //If we are holding a scanner, render all slots.
+	        AEntityF_Multipart<?> multipart = (AEntityF_Multipart<?>) entity;
+	        multipart.world.beginProfiling("PartHoloboxes", true);
+            IWrapperPlayer player = InterfaceManager.clientInterface.getClientPlayer();
+            AItemBase heldItem = player.getHeldItem();
+            AItemPart heldPart = heldItem instanceof AItemPart ? (AItemPart) heldItem : null;
+            boolean holdingScanner = player.isHoldingItemType(ItemComponentType.SCANNER);
+            if(heldPart != null || holdingScanner){
+                if(holdingScanner){
+                    for(Entry<BoundingBox, JSONPartDefinition> partSlotEntry : multipart.partSlotBoxes.entrySet()){
+                        JSONPartDefinition placementDefinition = partSlotEntry.getValue();
+                        if(!multipart.areVariablesBlocking(placementDefinition, player) && (placementDefinition.validSubNames == null || placementDefinition.validSubNames.contains(multipart.subName))){
+                            BoundingBox box = partSlotEntry.getKey();
+                            Point3D boxCenterDelta = box.globalCenter.copy().subtract(multipart.position);
+                            box.renderHolographic(transform, boxCenterDelta, ColorRGB.BLUE);
+                        }
+                    }
+                }else{
+                    for(Entry<BoundingBox, JSONPartDefinition> partSlotEntry : multipart.activePartSlotBoxes.entrySet()){
+                        boolean isHoldingCorrectTypePart = false;
+                        boolean isHoldingCorrectParamPart = false;
+                        
+                        if(heldPart.isPartValidForPackDef(partSlotEntry.getValue(), multipart.subName, false)){
+                            isHoldingCorrectTypePart = true;
+                            if(heldPart.isPartValidForPackDef(partSlotEntry.getValue(), multipart.subName, true)){
+                                isHoldingCorrectParamPart = true;
+                            }
+                        }
+                                
+                        if(isHoldingCorrectTypePart){
+                            BoundingBox box = partSlotEntry.getKey();
+                            Point3D boxCenterDelta = box.globalCenter.copy().subtract(multipart.position);
+                            box.renderHolographic(transform, boxCenterDelta, isHoldingCorrectParamPart ? ColorRGB.GREEN : ColorRGB.RED);
+                        }
+                    }
+                }
+            }
+            multipart.world.endProfiling();
+	    }
+    }
 	
 	/**
 	 *  Call to clear out the object caches for this model.  This resets all caches to cause the rendering

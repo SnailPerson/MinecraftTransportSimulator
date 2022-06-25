@@ -30,6 +30,7 @@ public class PartGroundDevice extends APart{
 	public static final Point3D groundOperationOffset = new Point3D(0, -0.25F, 0);
 	
 	//External states for animations.
+	public boolean drivenLastTick = true;
 	public boolean skipAngularCalcs = false;
 	public double angularPosition;
 	public double prevAngularPosition;
@@ -52,8 +53,8 @@ public class PartGroundDevice extends APart{
 	private final Point3D prevLocalOffset;
 	private final PartGroundDeviceFake fakePart;
 	
-	public PartGroundDevice(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data, APart parentPart){
-		super(entityOn, placingPlayer, placementDefinition, data, parentPart);
+	public PartGroundDevice(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data){
+		super(entityOn, placingPlayer, placementDefinition, data);
 		this.isFlat = data.getBoolean("isFlat");
 		this.prevLocalOffset = localOffset.copy();
 		this.zeroReferencePosition = position.copy();
@@ -63,7 +64,7 @@ public class PartGroundDevice extends APart{
 		//we will be marked as such.  Check that to prevent loops.  Also set some parameters manually
 		//as fake parts have a few special properties.
 		//Don't add the fake part until the first update loop.  This prevents save/load errors.
-		if(!isFake() && getLongPartOffset() != 0 && !placementDefinition.isSpare){
+		if(!isFake() && getLongPartOffset() != 0 && !isSpare){
 			//Need to swap placement for fake part so it uses the offset.
 			Point3D actualPlacement = placementDefinition.pos;
 			placementDefinition.pos = placementDefinition.pos.copy().add(0D, 0D, getLongPartOffset());
@@ -86,7 +87,7 @@ public class PartGroundDevice extends APart{
 	
 	@Override
 	public void update(){
-		if(vehicleOn != null && !placementDefinition.isSpare){
+		if(vehicleOn != null && !isSpare){
 			//Change ground device collective if we changed active state or offset.
 			if(prevActive != isActive){
 				vehicleOn.groundDeviceCollective.updateMembers();
@@ -99,11 +100,7 @@ public class PartGroundDevice extends APart{
 			}
 			
 			//Set reference position for animation vars if we call them later.
-			if(parentPart != null && placementDefinition.isSubPart){
-				zeroReferencePosition.set(placementOffset).subtract(parentPart.placementOffset).rotate(parentPart.orientation).add(parentPart.position);
-			}else{
-				zeroReferencePosition.set(placementOffset).rotate(entityOn.orientation).add(entityOn.position);
-			}
+			zeroReferencePosition.set(placementDefinition.pos).rotate(entityOn.orientation).add(entityOn.position);
 			
 			//If we are on the ground, adjust rotation.
 			if(vehicleOn.groundDeviceCollective.groundedGroundDevices.contains(this)){
@@ -159,12 +156,14 @@ public class PartGroundDevice extends APart{
 					boundingBox.depthRadius -= 0.25;
 				}
 			}else{
-				if(!vehicleOn.groundDeviceCollective.drivenWheels.contains(this)){
+				if(!drivenLastTick){
 					if(vehicleOn.brake > 0 || vehicleOn.parkingBrakeOn){
 						angularVelocity = 0;
 					}else if(angularVelocity>0){
 						angularVelocity = (float) Math.max(angularVelocity - 0.05, 0);
 					}
+				}else{
+				    drivenLastTick = false;
 				}
 				if(animateAsOnGround && !vehicleOn.groundDeviceCollective.isActuallyOnGround(this)){
 					animateAsOnGround = false;
@@ -281,9 +280,9 @@ public class PartGroundDevice extends APart{
 	public double getDesiredAngularVelocity(){
 		if(vehicleOn != null && (definition.ground.isWheel || definition.ground.isTread)){
 			if(vehicleOn.skidSteerActive){
-				if(placementOffset.x > 0){
+				if(placementDefinition.pos.x > 0){
 					return getLongPartOffset() == 0 ? vehicleOn.rudderAngle/200D/(getHeight()*Math.PI) : vehicleOn.rudderAngle/200D;
-				}else if(placementOffset.x < 0){
+				}else if(placementDefinition.pos.x < 0){
 					return getLongPartOffset() == 0 ? -vehicleOn.rudderAngle/200D/(getHeight()*Math.PI) : -vehicleOn.rudderAngle/200D;
 				}else{
 					return 0;

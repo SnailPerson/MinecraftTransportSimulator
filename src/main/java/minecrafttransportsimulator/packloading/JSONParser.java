@@ -618,7 +618,6 @@ public class JSONParser{
 					((AJSONInteractableEntity) definitionToOverride).connectionGroups = ((AJSONInteractableEntity) loadedDefinition).connectionGroups;
 					((AJSONInteractableEntity) definitionToOverride).instruments = ((AJSONInteractableEntity) loadedDefinition).instruments;
 					((AJSONInteractableEntity) definitionToOverride).variableModifiers = ((AJSONInteractableEntity) loadedDefinition).variableModifiers;
-					((AJSONInteractableEntity) definitionToOverride).effects = ((AJSONInteractableEntity) loadedDefinition).effects;
 					if(definitionToOverride instanceof AJSONPartProvider){
 						((AJSONPartProvider) definitionToOverride).parts = ((AJSONPartProvider) loadedDefinition).parts;
 					}

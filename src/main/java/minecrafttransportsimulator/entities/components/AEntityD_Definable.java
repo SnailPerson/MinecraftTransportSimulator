@@ -93,6 +93,9 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 	/**Maps light (model) object names to their definitions.  This is created from the JSON definition to prevent the need to do loops.**/
 	public final Map<String, JSONLight> lightObjectDefinitions = new HashMap<String, JSONLight>();
 	
+	/**Cached item to prevent pack lookups each item request.  May not be used if this is extended for other mods.**/
+	private AItemPack<JSONDefinition> cachedItem;
+	
 	/**Constructor for synced entities**/
 	public AEntityD_Definable(AWrapperWorld world, IWrapperPlayer placingPlayer, IWrapperNBT data){
 		super(world, placingPlayer, data);
@@ -151,10 +154,9 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 	}
 	
 	/**
-	 * Called to perform supplemental update logic on this entity.  This should be called after all logic on the
-	 * entity has been performed, and is used to do updates that require the new state to be ready.
-	 * Calling this before the entity finishes moving will lead to things "lagging" behind the entity, and calling
-	 * this before all states are set will lead to Bad Stuff.
+	 * Called to perform supplemental update logic on this entity.  This is called after the main {@link #update()}
+	 * loop, and is used to do updates that require the new state to be ready.  At this point, all "prior" values
+	 * and current values will be set to their current states.
 	 */
 	public void doPostUpdateLogic(){
 		//Update value-based text.  Only do this on clients as servers won't render this text.
@@ -267,10 +269,14 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 	}
 	
 	/**
-	 *  Returns the current item for this entity.
+	 *  Returns the current item for this entity.  This is not a static value to allow for overriding by packs.
 	 */
-	public <ItemInstance extends AItemPack<JSONDefinition>> ItemInstance getItem(){
-		return PackParserSystem.getItem(definition.packID, definition.systemName, subName);
+	@SuppressWarnings("unchecked")
+    public <ItemInstance extends AItemPack<JSONDefinition>> ItemInstance getItem(){
+	    if(cachedItem == null) {
+	        cachedItem = PackParserSystem.getItem(definition.packID, definition.systemName, subName);
+	    }
+		return (ItemInstance) cachedItem;
 	}
 	
 	/**

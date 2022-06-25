@@ -149,8 +149,8 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 			}
 			
 			//Next, boost based on parts.
-			for(APart part : parts){
-				furthestDownPoint = Math.min(part.placementOffset.y - part.getHeight()/2F, furthestDownPoint);
+			for(APart part : allParts){
+				furthestDownPoint = Math.min(part.placementDefinition.pos.y - part.getHeight()/2F, furthestDownPoint);
 			}
 			
 			//Add on -0.1 blocks for the default collision clamping.
@@ -224,8 +224,8 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 	}
 	
 	@Override
-	protected void sortBoxes(){
-		super.sortBoxes();
+	protected void updateBoxLists(){
+		super.updateBoxLists();
 		if(ticksExisted == 1){
 			//Need to do initial GDB updates.
 			groundDeviceCollective.updateMembers();
@@ -456,8 +456,8 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 			//Don't use fake ground devices here as it'll mess up math for vehicles.
 			boolean treadsOnly = true;
 			for(PartGroundDevice groundDevice : groundDeviceCollective.groundedGroundDevices){
-				if(groundDevice.placementDefinition.turnsWithSteer && !groundDevice.isFake()){
-					turningDistance = Math.max(turningDistance, Math.abs(groundDevice.placementOffset.z));
+				if(groundDevice.turnsWithSteer && !groundDevice.isFake()){
+					turningDistance = Math.max(turningDistance, Math.abs(groundDevice.placementDefinition.pos.z));
 					if(treadsOnly && !groundDevice.definition.ground.isTread){
 						treadsOnly = false;
 					}
@@ -474,7 +474,7 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 				for(APart part : parts){
 					if(part instanceof PartPropeller){
 						if(part.isInLiquid()){
-							turningDistance = Math.max(turningDistance, Math.abs(part.placementOffset.z));
+							turningDistance = Math.max(turningDistance, Math.abs(part.placementDefinition.pos.z));
 							break;
 						}
 					}
@@ -492,7 +492,7 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 						for(APart part : parts){
 							if(part instanceof PartGroundDevice){
 								if(groundDeviceCollective.groundedGroundDevices.contains(part)){
-									if(part.placementOffset.x > 0){
+									if(part.placementDefinition.pos.x > 0){
 										leftWheelGrounded = true;
 									}else{
 										rightWheelGrounded = true;

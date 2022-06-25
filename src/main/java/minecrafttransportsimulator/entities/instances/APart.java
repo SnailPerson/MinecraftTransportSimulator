@@ -1,28 +1,25 @@
 package minecrafttransportsimulator.entities.instances;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import minecrafttransportsimulator.baseclasses.AnimationSwitchbox;
 import minecrafttransportsimulator.baseclasses.Damage;
 import minecrafttransportsimulator.baseclasses.Point3D;
 import minecrafttransportsimulator.baseclasses.RotationMatrix;
-import minecrafttransportsimulator.entities.components.AEntityD_Definable;
-import minecrafttransportsimulator.entities.components.AEntityE_Interactable;
 import minecrafttransportsimulator.entities.components.AEntityF_Multipart;
 import minecrafttransportsimulator.jsondefs.JSONAnimationDefinition;
 import minecrafttransportsimulator.jsondefs.JSONConfigLanguage;
 import minecrafttransportsimulator.jsondefs.JSONConfigLanguage.LanguageEntry;
+import minecrafttransportsimulator.jsondefs.JSONItem.ItemComponentType;
 import minecrafttransportsimulator.jsondefs.JSONPart;
 import minecrafttransportsimulator.jsondefs.JSONPartDefinition;
+import minecrafttransportsimulator.jsondefs.JSONSubDefinition;
 import minecrafttransportsimulator.mcinterface.IWrapperNBT;
 import minecrafttransportsimulator.mcinterface.IWrapperPlayer;
 import minecrafttransportsimulator.mcinterface.InterfaceManager;
 import minecrafttransportsimulator.packets.instances.PacketPlayerChatMessage;
-import minecrafttransportsimulator.packloading.JSONParser;
 import minecrafttransportsimulator.rendering.instances.RenderPart;
 
 /**This class is the base for all parts and should be extended for any entity-compatible parts.
@@ -34,31 +31,28 @@ import minecrafttransportsimulator.rendering.instances.RenderPart;
  * 
  * @author don_bruce
  */
-public abstract class APart extends AEntityE_Interactable<JSONPart>{
+public abstract class APart extends AEntityF_Multipart<JSONPart>{
 	private static RenderPart renderer;
 	
 	//JSON properties.
-	public final JSONPartDefinition placementDefinition;
-	public final Point3D placementOffset;
+	public JSONPartDefinition placementDefinition;
+	public final int placementSlot;
 	
 	//Instance properties.
-	/**The entity this part has been placed on.*/
+	/**The entity this part has been placed on.  May be a vehicle or a part.*/
 	public final AEntityF_Multipart<?> entityOn;
-	/**The vehicle this part has been placed on, or null if it wasn't placed on a vehicle.*/
+	/**The vehicle this part has been placed on.  This recurses to the vehicle itself if this part was placed on a part.
+	 * Will be null, however, if this part isn't on a vehicle (say if it's on a decor).*/
 	public final EntityVehicleF_Physics vehicleOn;
-	/**The parent of this part, if this part is a sub-part of a part or an additional part for an entity.*/
-	public final APart parentPart;
-	/**Children to this part.  Can be either additional parts or sub-parts.*/
-	public final List<APart> childParts = new ArrayList<APart>();
+	/**The part this part is on, or null if it's on a base entity.*/
+    public final APart partOn;
 	
-	/**Cached pack definition mappings for sub-part packs.  First key is the parent part definition, which links to a map.
-	 * This second map is keyed by a part definition, with the value equal to a corrected definition.  This means that
-	 * in total, this object contains all sub-packs created on any entity for any part with sub-packs.  This is done as parts with
-	 * sub-parts use relative locations, and thus we need to ensure we have the correct position for them on any entity part location.*/
-	private final Map<JSONPartDefinition, JSONPartDefinition> subpackMappings = new HashMap<JSONPartDefinition, JSONPartDefinition>();
 	public boolean isInvisible = false;
 	public boolean isActive = true;
-	public boolean isMirrored;
+	public final boolean turnsWithSteer;
+	public final boolean isSpare;
+	/**The local offset from this part, to the master entity.  This may not be the offset from the part to the entity it is
+	 * on if the entity is a part itself.*/
 	public final Point3D localOffset;
 	public final RotationMatrix localOrientation;
 	public final RotationMatrix zeroReferenceOrientation;
@@ -68,55 +62,46 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 	private AnimationSwitchbox placementMovementSwitchbox;
 	private AnimationSwitchbox internalMovementSwitchbox;
 		
-	public APart(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data, APart parentPart){
+	public APart(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data){
 		super(entityOn.world, placingPlayer, data);
 		this.entityOn = entityOn;
 		this.vehicleOn = entityOn instanceof EntityVehicleF_Physics ? (EntityVehicleF_Physics) entityOn : null;
+		this.partOn = entityOn instanceof APart ? (APart) entityOn : null;
 		this.placementDefinition = placementDefinition;
-		this.placementOffset = placementDefinition.pos;
+		this.placementSlot = entityOn.definition.parts.indexOf(placementDefinition);
 		
-		this.localOffset = placementOffset.copy();
+		this.localOffset = placementDefinition.pos.copy();
 		this.localOrientation = new RotationMatrix();
 		this.zeroReferenceOrientation = new RotationMatrix();
 		this.prevZeroReferenceOrientation = new RotationMatrix();
 		
-		//If we are an additional part or sub-part, link ourselves now.
-		//If we are a fake part, don't even bother checking.
-		if(!isFake() && parentPart != null){
-			this.parentPart = parentPart;
-			parentPart.childParts.add(this);
-		}else{
-			this.parentPart = null;
-		}
+		this.turnsWithSteer = placementDefinition.turnsWithSteer || (partOn != null && partOn.turnsWithSteer);
+		this.isSpare = placementDefinition.isSpare || (partOn != null && partOn.isSpare);
 		
 		//Set initial position and rotation.  This ensures part doesn't "warp" the first tick.
-		//Note that this isn't exact, as we can't calculate the exact locals until after the first tick.
-		//This is why it does not take into account parent part positions.
+		//Note that this isn't exact, as we can't calculate the exact locals until after the first tick
+		//when we init all our animations.
 		position.set(localOffset).add(entityOn.position);
 		prevPosition.set(position);
 		orientation.set(entityOn.orientation);
 		prevOrientation.set(orientation);
-		
-		//Set mirrored state.
-		this.isMirrored = (placementOffset.x < 0 && !placementDefinition.inverseMirroring) || (placementOffset.x >= 0 && placementDefinition.inverseMirroring);
 	}
 	
 	@Override
 	protected void initializeDefinition(){
 		super.initializeDefinition();
-		AEntityD_Definable<?> entityPlacedOn = parentPart != null && placementDefinition.isSubPart ? parentPart : entityOn;
 		if(placementDefinition.animations != null || placementDefinition.applyAfter != null){
 			List<JSONAnimationDefinition> animations = new ArrayList<JSONAnimationDefinition>();
 			if(placementDefinition.animations != null){
 				animations.addAll(placementDefinition.animations);
 			}
-			placementMovementSwitchbox = new AnimationSwitchbox(entityPlacedOn, animations, placementDefinition.applyAfter);
+			placementMovementSwitchbox = new AnimationSwitchbox(entityOn, animations, placementDefinition.applyAfter);
 		}
 		if(definition.generic.movementAnimations != null){
 			internalMovementSwitchbox = new AnimationSwitchbox(this, definition.generic.movementAnimations, null);
 		}
 		if(placementDefinition.activeAnimations != null){
-			placementActiveSwitchbox = new AnimationSwitchbox(entityPlacedOn, placementDefinition.activeAnimations, null);
+			placementActiveSwitchbox = new AnimationSwitchbox(entityOn, placementDefinition.activeAnimations, null);
 		}
 		if(definition.generic.activeAnimations != null){
 			internalActiveSwitchbox = new AnimationSwitchbox(this, definition.generic.activeAnimations, null);
@@ -127,7 +112,7 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 	public void update(){
 		super.update();
 		//Update active state.
-		isActive = placementDefinition.isSubPart ? parentPart.isActive : true;
+		isActive = partOn != null ? partOn.isActive : true;
 		if(isActive && placementActiveSwitchbox != null){
 			isActive = placementActiveSwitchbox.runSwitchbox(0, false);
 		}
@@ -136,17 +121,10 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 		}
 		
 		//Set initial offsets.
-		if(parentPart != null && placementDefinition.isSubPart){
-			motion.set(parentPart.motion);
-			position.set(parentPart.position);
-			orientation.set(parentPart.orientation);
-			localOffset.set(placementOffset).subtract(parentPart.placementOffset);
-		}else{
-			motion.set(entityOn.motion);
-			position.set(entityOn.position);
-			orientation.set(entityOn.orientation);
-			localOffset.set(placementOffset);
-		}
+		motion.set(entityOn.motion);
+		position.set(entityOn.position);
+		orientation.set(entityOn.orientation);
+		localOffset.set(placementDefinition.pos);
 		
 		//Update zero-reference.
 		prevZeroReferenceOrientation.set(zeroReferenceOrientation);
@@ -157,7 +135,7 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 		
 		//Update local position, orientation, scale, and enabled state.
 		isInvisible = false;
-		scale.set(placementDefinition.isSubPart && parentPart != null ? parentPart.scale : entityOn.scale);
+		scale.set(entityOn.scale);
 		localOrientation.setToZero();
 		
 		//Placement movement uses the coords of the thing we are on.
@@ -200,13 +178,6 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 		boundingBox.widthRadius = getWidth()/2D*scale.x;
 		boundingBox.heightRadius = getHeight()/2D*scale.y;
 		boundingBox.depthRadius = getWidth()/2D*scale.z;
-		
-		//Add-back parent offset to our locals if we have one.
-		//We don't use this value in any of our interim calculations as we do everything relative to the parent.
-		//However, external calls expect this to be relative to the entity we are on, which is NOT our parent.
-		if(parentPart != null && placementDefinition.isSubPart){
-			localOffset.add(parentPart.localOffset);
-		}
 	}
 	
 	@Override
@@ -217,6 +188,31 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 			interactionBoxes.add(boundingBox);
 		}
 	}
+	
+	@Override
+    protected void updateBoxLists(){
+	    super.updateBoxLists();
+	    
+	    //Don't add our collision boxes to the box list if we aren't active and on the client.
+	    //Servers need all of these since we might be active for some players and not others.
+        if(world.isClient() && areVariablesBlocking(placementDefinition, InterfaceManager.clientInterface.getClientPlayer())){
+            allInteractionBoxes.clear();
+            return;
+        }
+        
+        //If we are holding a wrench, and the part has children, don't add it.  We can't wrench those parts.
+        //The only exception are parts that have permanent-default parts on them.  These can be wrenched.
+        //Again, this only applies on clients for that client player.
+        if(world.isClient() && InterfaceManager.clientInterface.getClientPlayer().isHoldingItemType(ItemComponentType.WRENCH)){
+            for(APart childPart : parts){
+                if(!childPart.placementDefinition.isPermanent){
+                    allInteractionBoxes.clear();
+                    return;
+                }
+            }
+        }
+	    
+    }
 	
 	@Override
 	public void attack(Damage damage){
@@ -239,6 +235,12 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 	}
 	
 	@Override
+    public void addPart(APart part, boolean sendPacket){
+	    super.addPart(part, sendPacket);
+	    this.onPartChange();
+	}
+	
+	@Override
 	public PlayerOwnerState getOwnerState(IWrapperPlayer player){
 		return entityOn.getOwnerState(player);
 	}
@@ -249,49 +251,102 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 	}
 	
 	@Override
-	public void remove(){
-		super.remove();
-		if(parentPart != null){
-			parentPart.childParts.remove(this);
-		}
-	}
-	
-	@Override
 	public boolean shouldSavePosition(){
 		return false;
 	}
-	
+
 	/**
-	 * Returns a definition with the correct properties for a SubPart.  This is because
-	 * subParts inherit some properties from their parent parts.  All created sub-part
-	 * packs are cached locally once created, as they need to not create new instances.
-	 * If they did, then the lookup relation between them and their spot in the vehicle would
-	 * get broken for maps on each reference.
+	 * Updates the tone of the part to its appropriate type.
+	 * If the part can't match the tone of this vehicle, then it is not modified.
 	 */
-	public JSONPartDefinition getPackForSubPart(JSONPartDefinition subPartDef){
-		if(!subpackMappings.containsKey(subPartDef)){
-			//Use GSON to make a deep copy of the JSON-defined pack definition.
-			//Set the sub-part flag to ensure we know this is a subPart for rendering operations.
-			JSONPartDefinition correctedPartDef = JSONParser.duplicateJSON(subPartDef);
-			correctedPartDef.isSubPart = true;
-			
-			//Now set parent-specific properties.  These pertain to position, rotation, mirroring, and the like.
-			//First add the parent pack's position to the sub-pack.
-			//We don't add rotation, as we need to stay relative to the parent part, as the parent part will rotate us.
-			correctedPartDef.pos.add(placementDefinition.pos);
-			
-			//Use the parent's turnsWithSteer, mirroring, and isSpare variables, as that's based on the vehicle, not the part.
-			correctedPartDef.turnsWithSteer = placementDefinition.turnsWithSteer;
-			correctedPartDef.inverseMirroring = placementDefinition.inverseMirroring;
-			correctedPartDef.isSpare = placementDefinition.isSpare;
-			
-			//Save the corrected pack into the mappings for later use.
-	        subpackMappings.put(subPartDef, correctedPartDef);
+	public void updateTone(boolean recursive){
+		if(placementDefinition.toneIndex != 0){
+			List<String> partTones = null;
+			for(JSONSubDefinition subDefinition : entityOn.definition.definitions){
+				if(subDefinition.subName.equals(entityOn.subName)){
+					partTones = subDefinition.partTones;
+				}
+			}
+			if(partTones != null && partTones.size() >= placementDefinition.toneIndex){
+				String partTone = partTones.get(placementDefinition.toneIndex - 1);
+				for(JSONSubDefinition subDefinition : definition.definitions){
+					if(subDefinition.subName.equals(partTone)){
+						subName = partTone;
+						return;
+					}
+				}
+			}
 		}
-		return subpackMappings.get(subPartDef);
+		
+		if(recursive && !parts.isEmpty()){
+			for(APart part : parts) {
+				part.updateTone(true);
+			}
+		}
 	}
 	
+	/**
+     * Called whenever a part is added or removed from the entity this part is on.
+     * At the time of call, the part that was added will already be added, and the part
+     * that was removed will already me removed.  The part removed will never be this part,
+     * but this part may be the part added.  There also may not be any part addition or removal,
+     * as is the case when a part reports a change because one of its subparts was changed.
+     * No updates are performed prior to calling this method in the latter case, so do not 
+     * reference any animation blocks in this method.
+     */
+    public void onPartChange(){
+        parts.forEach(part -> part.onPartChange());
+    }
 	
+	/**
+     * Adds all linked parts to the passed-in list.  This method is semi-recursive.  If a part is
+     * in a linked slot, and it matches the class, then that part is added and the next slot is checked.
+     * If the part doesn't match, then all child parts of that part are checked to see if they match.
+     * This is done irrespective of the slot match on the sub-part, but will respect the part class.
+     * This is done because wheels and other parts will frequently be attached to other parts in specific
+     * slots, such as custom axles or gun mounting hardpoints.  This method will also check in reverse, in
+     * that if a part is linked to the slot of this part, then it will act as if this part had a linking to
+     * the slot of the other part, provided the class matches the passed-in class.  Note that for all cases,
+     * the JSON values are 1-indexed, whereas the map is 0-indexed.
+     */
+    public <PartClass extends APart> void addLinkedPartsToList(List<PartClass> partList, Class<PartClass> partClass){
+        //Check for parts we are linked to.
+        if(placementDefinition.linkedParts != null) {
+            for(int partIndex : placementDefinition.linkedParts) {
+                APart partAtIndex = entityOn.partsInSlots.get(partIndex-1);
+                if(partClass.isInstance(partAtIndex)){
+                    partList.add(partClass.cast(partAtIndex));
+                }else if(partAtIndex != null) {
+                    partAtIndex.addMatchingPartsToList(partList, partClass);
+                }
+            }
+        }
+        
+        //Now check for parts linked to us.
+        for(APart part : entityOn.parts) {
+            if(part != this && part.placementDefinition.linkedParts != null) {
+                for(int partIndex : part.placementDefinition.linkedParts) {
+                    if(partIndex-1 == this.placementSlot){
+                        if(partClass.isInstance(part)) {
+                            partList.add(partClass.cast(part));
+                        }else {
+                            part.addMatchingPartsToList(partList, partClass);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public <PartClass extends APart> void addMatchingPartsToList(List<PartClass> partList, Class<PartClass> partClass){
+        for(APart part : parts) {
+            if(partClass.isInstance(part)){
+                partList.add(partClass.cast(part));
+            }else if(part != null) {
+                part.addMatchingPartsToList(partList, partClass);
+            }
+        }
+    }
 	
 	/**
 	 * Returns true if this part is in liquid.
@@ -354,19 +409,19 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 	public double getRawVariableValue(String variable, float partialTicks){
 		//If the variable is prefixed with "parent_", then we need to get our parent's value.
 		if(variable.startsWith("parent_")){
-			return parentPart.getRawVariableValue(variable.substring("parent_".length()), partialTicks);
+			return entityOn.getRawVariableValue(variable.substring("parent_".length()), partialTicks);
 		}else if(definition.parts != null){
 			//Check sub-parts for the part with the specified index.
 			int partNumber = getVariableNumber(variable);
 			if(partNumber != -1){
-				return AEntityF_Multipart.getSpecificPartAnimation(this, variable, partNumber, partialTicks);
+				return getSpecificPartAnimation(variable, partNumber, partialTicks);
 			}
 		}
 		
 		//Check for generic part variables.
 		switch(variable){
 			case("part_present"): return 1;
-			case("part_ismirrored"): return isMirrored ? 1 : 0;
+			case("part_ismirrored"): return placementDefinition.isMirrored ? 1 : 0;
 		}
 		
 		//No variables, check super variables before doing generic forwarding.
@@ -377,14 +432,7 @@ public abstract class APart extends AEntityE_Interactable<JSONPart>{
 			return value;
 		}
 		
-		//We didn't find any part-specific or generic animations.
-		//We could, however, be wanting the animations of our parent part, but didn't specify a _parent prefix.
-		//If we have a parent part, get it, and try this loop again.
-		if(parentPart != null){
-			return parentPart.getRawVariableValue(variable, partialTicks);
-		}
-
-		//If we are down here, we must have not found a part variable, and don't have a parent part to do default forwarding.
+		//If we are down here, we must have not found a part variable.
 		//This means we might be requesting a variable on the entity this part is placed on.
 		//Try to get the parent variable, and return whatever we get, NaN or otherwise.
 		return entityOn.getRawVariableValue(variable, partialTicks);

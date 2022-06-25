@@ -269,13 +269,13 @@ public class EntityVehicleF_Physics extends AEntityVehicleE_Powered{
 			thrustForce.set(0, 0, 0);
 			thrustTorque.set(0, 0, 0);
 			rotorRotation.set(0, 0, 0);
-			for(APart part : parts){
+			for(APart part : allParts){
 				if(part instanceof PartEngine){
 					((PartEngine) part).addToForceOutput(thrustForce, thrustTorque);
 				}else if(part instanceof PartPropeller){
 					PartPropeller propeller = (PartPropeller) part;
 					propeller.addToForceOutput(thrustForce, thrustTorque);
-					if(propeller.definition.propeller.isRotor && propeller.angularVelocity > 0 && !groundDeviceCollective.isAnythingOnGround()){
+					if(propeller.definition.propeller.isRotor && !groundDeviceCollective.isAnythingOnGround()){
 						hasRotors = true;
 						if(getVariable(AUTOLEVEL_VARIABLE) != 0){
 							rotorRotation.set((-(elevatorAngle + elevatorTrim) - orientation.angles.x)/MAX_ELEVATOR_ANGLE, -5D*rudderAngle/MAX_RUDDER_ANGLE, ((aileronAngle + aileronTrim) - orientation.angles.z)/MAX_AILERON_ANGLE);

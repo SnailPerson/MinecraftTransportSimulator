@@ -74,6 +74,8 @@ public class PartGun extends APart{
 	private int windupTimeCurrent;
 	private int windupRotation;
 	public IWrapperEntity lastController;
+	private PartSeat lastControllerSeat;
+	private List<PartGun> lastGunGroup;
 	private IWrapperEntity entityTarget;
 	private PartEngine engineTarget;
 	private long millisecondCamOffset;
@@ -81,6 +83,7 @@ public class PartGun extends APart{
 	private final Point3D bulletPosition = new Point3D();
 	private final Point3D bulletVelocity = new Point3D();
 	private final RotationMatrix bulletOrientation = new RotationMatrix();
+	private final List<PartSeat> seatsControllingGun = new ArrayList<PartSeat>();
 	
 	//Temp helper variables for calculations
 	private final Point3D targetVector = new Point3D();
@@ -91,8 +94,8 @@ public class PartGun extends APart{
 	public final List<Integer> bulletsHitOnServer = new ArrayList<Integer>();
 	public static final int RAYTRACE_DISTANCE = 750;
 		
-	public PartGun(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data, APart parentPart){
-		super(entityOn, placingPlayer, placementDefinition, data, parentPart);
+	public PartGun(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data){
+		super(entityOn, placingPlayer, placementDefinition, data);
 		
 		//Set min/max yaw/pitch angles based on our definition and the entity definition.
 		//If the entity definition min/max yaw is -180 to 180, set it to that.  Otherwise, get the max bounds.
@@ -190,7 +193,7 @@ public class PartGun extends APart{
 	public void update(){
 		//Set gun state and do updates.
 		prevInternalOrientation.set(internalOrientation);
-		if(isActive && !placementDefinition.isSpare){
+		if(isActive && !isSpare){
 			//Check if we have a controller.
 			//We aren't making sentry turrets here.... yet.
 			IWrapperEntity controller = getGunController();
@@ -200,8 +203,9 @@ public class PartGun extends APart{
 					state = state.promote(GunState.CONTROLLED);
 				}else{
 					//If this gun type can only have one selected at a time, check that this has the selected index.
-					PartSeat controllerSeat = entityOn.getSeatForRider(controller);
-					if(gunItem.equals(controllerSeat.activeGun) && (!definition.gun.fireSolo || entityOn.partsByItem.get(gunItem).get(controllerSeat.gunIndex).equals(this))){
+				    lastControllerSeat = (PartSeat) lastController.getEntityRiding();
+				    lastGunGroup = lastControllerSeat.gunGroups.get(getItem());
+					if(gunItem == lastControllerSeat.activeGunItem && (!definition.gun.fireSolo || lastControllerSeat.gunGroups.get(gunItem).get(lastControllerSeat.gunIndex) == this)){
 						state = state.promote(GunState.CONTROLLED);
 					}else{
 						state = state.demote(GunState.ACTIVE);
@@ -215,8 +219,8 @@ public class PartGun extends APart{
 				//If we aren't being controlled, check if we have any coaxial guns.
 				//If we do, and they have a controller, then we use that as our controller.
 				//This allows them to control this gun without being the actual controller for firing.
-				if(!childParts.isEmpty()){
-					for(APart part : childParts){
+				if(!parts.isEmpty()){
+					for(APart part : parts){
 						if(part instanceof PartGun && part.placementDefinition.isCoAxial){
 							controller = ((PartGun) part).getGunController();
 							if(controller != null){
@@ -243,19 +247,23 @@ public class PartGun extends APart{
 				//If we don't wait, we can bypass the cooldown by toggling the trigger.
 				long timeSinceFiring = System.currentTimeMillis() - lastTimeFired;
 				if(!state.isAtLeast(GunState.FIRING_CURRENTLY) && timeSinceFiring >= millisecondFiringDelay){
-					List<APart> allGuns = entityOn.partsByItem.get(gunItem);
-					//Check if we have a primary gun.  If so, we may need to adjust cams to resume the firing sequence.
-					int sequenceIndex = allGuns.indexOf(this);
-					APart lastPrimaryPart = entityOn.lastPrimaryPart.get(gunItem);
-					if(lastPrimaryPart != null){
-						sequenceIndex = sequenceIndex - 1 - allGuns.indexOf(lastPrimaryPart);
-						if(sequenceIndex < 0){
-							sequenceIndex += allGuns.size();
-						}
-					}
+				    if(lastControllerSeat != null) {
+				        //Get current group and use it to determine firing offset.
+                        //If the seat fired a gun before, we need to offset our index for that gun.
+				        //This allows for resumption of the sequence if it was paused mid-firing.
+                        int sequenceIndex = lastGunGroup.indexOf(this);
+                        if(lastControllerSeat.lastGunFired != null){
+                            sequenceIndex = sequenceIndex - 1 - lastGunGroup.indexOf(lastControllerSeat.lastGunFired);
+                            if(sequenceIndex < 0){
+                                sequenceIndex += lastGunGroup.size();
+                            }
+                        }
+                        millisecondCamOffset = definition.gun.fireSolo ? 0 : millisecondFiringDelay*sequenceIndex/lastGunGroup.size();
+				    }else {
+				        millisecondCamOffset = definition.gun.fireSolo ? 0 : millisecondFiringDelay;
+				    }
 
 					state = state.promote(GunState.FIRING_CURRENTLY);
-					millisecondCamOffset = definition.gun.fireSolo ? 0 : millisecondFiringDelay*sequenceIndex/allGuns.size();
 					lastTimeFired = System.currentTimeMillis() + millisecondCamOffset;
 					//For clients, we offset the time fired back one cycle, so we can spawn the first bullet.
 					//This will be set current in the particle spawning logic.
@@ -283,7 +291,12 @@ public class PartGun extends APart{
 						if(!ConfigSystem.settings.general.devMode.value)bulletsLeft -= bulletsToRemove;
 						bulletsRemovedThisRequest += bulletsToRemove;
 						bulletsFired += bulletsToRemove;
-						entityOn.lastPrimaryPart.put(gunItem, this);
+						if(lastControllerSeat != null) {
+						    lastControllerSeat.lastGunFired = this;
+			                if(lastGunGroup.size() <= ++lastControllerSeat.gunIndex){
+			                    lastControllerSeat.gunIndex = 0;
+			                } 
+			            }
 						millisecondLastTimeFired = System.currentTimeMillis();
 						if(definition.gun.muzzleGroups.size() == ++currentMuzzleGroupIndex){
 							currentMuzzleGroupIndex = 0;
@@ -623,20 +636,22 @@ public class PartGun extends APart{
 			return ((EntityPlayerGun) entityOn).player;
 		}
 		
-		//Check our parent part, if we have one.
-		if(parentPart instanceof PartSeat){
-			return entityOn.locationRiderMap.get(parentPart.placementOffset);
+		//Check if our parent entity is a seat and has a rider.
+		if(entityOn instanceof PartSeat && entityOn.rider != null){
+			return entityOn.rider;
 		}
 		
-		//Check any child parts.
-		for(APart childPart : childParts){
-			if(childPart instanceof PartSeat){
-				return entityOn.locationRiderMap.get(childPart.placementOffset);
-			}
+		//Check any linked seats.
+		seatsControllingGun.clear();
+		addLinkedPartsToList(seatsControllingGun, PartSeat.class);
+		if(!seatsControllingGun.isEmpty()) {
+		    for(PartSeat seat : seatsControllingGun) {
+		        if(seat.rider != null) {
+                    return seat.rider;
+                }
+		    }
 		}
-		
-		//Not parent or child.  Get main vehicle controller if we have one.
-		return entityOn.getController();
+		return null;
 	}
 	
 	/**
@@ -761,7 +776,12 @@ public class PartGun extends APart{
 			}
 			
 			//Update states.
-			entityOn.lastPrimaryPart.put(gunItem, this);
+			if(lastControllerSeat != null) {
+			    lastControllerSeat.lastGunFired = this;
+			    if(lastGunGroup.size() <= ++lastControllerSeat.gunIndex){
+			        lastControllerSeat.gunIndex = 0;
+                } 
+			}
 			lastTimeFired += millisecondFiringDelay;
 			firedThisRequest = true;
 			firedThisCheck = true;

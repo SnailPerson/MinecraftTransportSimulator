@@ -148,7 +148,7 @@ public class RenderableModelObject<AnimationEntity extends AEntityD_Definable<?>
 					}
 				}
 				
-				if(entity instanceof PartGroundDevice && ((PartGroundDevice) entity).definition.ground.isTread && !((PartGroundDevice) entity).placementDefinition.isSpare){
+				if(entity instanceof PartGroundDevice && ((PartGroundDevice) entity).definition.ground.isTread && !((PartGroundDevice) entity).isSpare){
 					//Active tread.  Do tread-path rendering instead of normal model.
 					if(!blendingEnabled){
 						doTreadRendering((PartGroundDevice) entity, partialTicks);
@@ -240,8 +240,7 @@ public class RenderableModelObject<AnimationEntity extends AEntityD_Definable<?>
 	}
 	
 	private void doTreadRendering(PartGroundDevice tread, float partialTicks){
-		AEntityD_Definable<?> entityTreadAttachedTo = tread.placementDefinition.isSubPart ? tread.parentPart : tread.entityOn;
-		String treadPathModel = entityTreadAttachedTo.definition.getModelLocation(entityTreadAttachedTo.subName); 
+		String treadPathModel = tread.entityOn.definition.getModelLocation(tread.entityOn.subName); 
 		Map<Float, List<Double[]>> treadPointsMap = treadPoints.get(treadPathModel);
 		if(treadPointsMap == null){
 			treadPointsMap = new HashMap<Float, List<Double[]>>();
@@ -249,7 +248,7 @@ public class RenderableModelObject<AnimationEntity extends AEntityD_Definable<?>
 		List<Double[]> points = treadPointsMap.get(tread.definition.ground.spacing);
 		
 		if(points == null){
-			points = generateTreads(entityTreadAttachedTo, treadPathModel, treadPointsMap, tread);
+			points = generateTreads(tread.entityOn, treadPathModel, treadPointsMap, tread);
 			treadPointsMap.put(tread.definition.ground.spacing, points);
 			treadPoints.put(treadPathModel, treadPointsMap);
 		}
@@ -271,7 +270,7 @@ public class RenderableModelObject<AnimationEntity extends AEntityD_Definable<?>
 		
 		//Tread rendering is done via the thing the tread is on, which will assume the part is centered at 0, 0, 0.
 		//We need to undo the offset of the tread part for this routine.
-		if(!(entityTreadAttachedTo instanceof APart)){
+		if(!(tread.entityOn instanceof APart)){
 			object.transform.applyTranslation(0, -tread.localOffset.y, -tread.localOffset.z);
 		}
 		

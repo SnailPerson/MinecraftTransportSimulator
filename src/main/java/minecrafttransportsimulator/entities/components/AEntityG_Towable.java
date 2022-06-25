@@ -130,7 +130,7 @@ public abstract class AEntityG_Towable<JSONDefinition extends AJSONPartProvider>
 			setVariable(TOWING_CONNECTION_REQUEST_VARIABLE, 0);
 		}
 		//also check parts, in case they got a request.
-		for(APart part : parts){
+		for(APart part : allParts){
 			connectionRequestIndex = (int) part.getVariable(TOWING_CONNECTION_REQUEST_VARIABLE);
 			if(connectionRequestIndex != 0){
 				if(!world.isClient()){
@@ -270,7 +270,7 @@ public abstract class AEntityG_Towable<JSONDefinition extends AJSONPartProvider>
 				for(AEntityG_Towable<?> testEntity : entitiesToCheck){
 					result = testEntity.checkIfTrailerCanConnect(testEntity, testEntity, -1, this, connectionDefiner, connectionGroupIndex);
 					if(result.skip){
-						for(APart testPart : testEntity.parts){
+						for(APart testPart : testEntity.allParts){
 							result = testEntity.checkIfTrailerCanConnect(testEntity, testPart, -1, this, connectionDefiner, connectionGroupIndex);
 							if(!result.skip){
 								result.handlePacket(this);
@@ -287,7 +287,7 @@ public abstract class AEntityG_Towable<JSONDefinition extends AJSONPartProvider>
 				for(AEntityG_Towable<?> testEntity : entitiesToCheck){
 					result = checkIfTrailerCanConnect(this, connectionDefiner, connectionGroupIndex, testEntity, testEntity, -1);
 					if(result.skip){
-						for(APart testPart : testEntity.parts){
+						for(APart testPart : testEntity.allParts){
 							result = checkIfTrailerCanConnect(this, connectionDefiner, connectionGroupIndex, testEntity, testPart, -1);
 							if(!result.skip){
 								result.handlePacket(this);
