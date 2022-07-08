@@ -100,7 +100,7 @@ public class WrapperEntity implements IWrapperEntity{
 		if(mcEntityRiding instanceof BuilderEntityLinkedSeat){
 			AEntityE_Interactable<?> entityRiding = ((BuilderEntityLinkedSeat) mcEntityRiding).entity;
 			//Need to check this as MC might have us as a rider on the builer, but we might not be a rider on the entity.
-			if(entityRiding != null && entityRiding.rider == this){
+			if(entityRiding != null && this.equals(entityRiding.rider)){
 				return entityRiding;
 			}
 		}

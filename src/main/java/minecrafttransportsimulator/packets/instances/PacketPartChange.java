@@ -70,7 +70,9 @@ public class PacketPartChange extends APacketEntity<AEntityF_Multipart<?>>{
 				entity.removePart(part, null);
 			}
 		}else{
-			entity.addPart(partItem.createPart(entity, null, entity.definition.parts.get(partSlot), partData), false);
+			APart part = partItem.createPart(entity, null, entity.definition.parts.get(partSlot), partData);
+			entity.addPart(part, false);
+			part.addPartsPostAddition(null, partData);
 		}
 		return true;
 	}

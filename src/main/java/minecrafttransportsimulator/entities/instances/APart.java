@@ -65,7 +65,11 @@ public abstract class APart extends AEntityF_Multipart<JSONPart>{
 	public APart(AEntityF_Multipart<?> entityOn, IWrapperPlayer placingPlayer, JSONPartDefinition placementDefinition, IWrapperNBT data){
 		super(entityOn.world, placingPlayer, data);
 		this.entityOn = entityOn;
-		this.vehicleOn = entityOn instanceof EntityVehicleF_Physics ? (EntityVehicleF_Physics) entityOn : null;
+        AEntityF_Multipart<?> parentEntity = entityOn;
+        while(parentEntity instanceof APart) {
+            parentEntity = ((APart) parentEntity).entityOn;
+        }
+		this.vehicleOn = parentEntity instanceof EntityVehicleF_Physics ? (EntityVehicleF_Physics) parentEntity : null;
 		this.partOn = entityOn instanceof APart ? (APart) entityOn : null;
 		this.placementDefinition = placementDefinition;
 		this.placementSlot = entityOn.definition.parts.indexOf(placementDefinition);
@@ -88,8 +92,8 @@ public abstract class APart extends AEntityF_Multipart<JSONPart>{
 	}
 	
 	@Override
-	protected void initializeDefinition(){
-		super.initializeDefinition();
+	protected void initializeAnimations(){
+		super.initializeAnimations();
 		if(placementDefinition.animations != null || placementDefinition.applyAfter != null){
 			List<JSONAnimationDefinition> animations = new ArrayList<JSONAnimationDefinition>();
 			if(placementDefinition.animations != null){
@@ -190,23 +194,23 @@ public abstract class APart extends AEntityF_Multipart<JSONPart>{
 	}
 	
 	@Override
-    protected void updateBoxLists(){
-	    super.updateBoxLists();
+    protected void updateEncompassingBoxLists(){
+	    super.updateEncompassingBoxLists();
 	    
-	    //Don't add our collision boxes to the box list if we aren't active and on the client.
+	    //Don't add our interaction boxes to the box list if we aren't active and on the client.
 	    //Servers need all of these since we might be active for some players and not others.
         if(world.isClient() && areVariablesBlocking(placementDefinition, InterfaceManager.clientInterface.getClientPlayer())){
-            allInteractionBoxes.clear();
+            allInteractionBoxes.removeAll(interactionBoxes);
             return;
         }
         
-        //If we are holding a wrench, and the part has children, don't add it.  We can't wrench those parts.
+        //If we are holding a wrench, and the part has children, don't add the interaction boxes.  We can't wrench those parts.
         //The only exception are parts that have permanent-default parts on them.  These can be wrenched.
         //Again, this only applies on clients for that client player.
         if(world.isClient() && InterfaceManager.clientInterface.getClientPlayer().isHoldingItemType(ItemComponentType.WRENCH)){
             for(APart childPart : parts){
                 if(!childPart.placementDefinition.isPermanent){
-                    allInteractionBoxes.clear();
+                    allInteractionBoxes.removeAll(interactionBoxes);
                     return;
                 }
             }

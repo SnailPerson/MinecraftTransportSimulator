@@ -273,7 +273,9 @@ public final class LegacyCompatSystem{
 				throw new NullPointerException("Could not perform Legacy Compats on part entry #" + (definition.parts.indexOf(partDef) + 1) + " due to an unknown error.  This is likely due to a missing or incorrectly-named field.");
 			}
 		}
-		performPartSlotListingLegacyCompats(definition.parts, definition.motorized.isFrontWheelDrive, definition.motorized.isRearWheelDrive);
+		if(definition.parts != null) {
+		    performPartSlotListingLegacyCompats(definition.parts, definition.motorized.isFrontWheelDrive, definition.motorized.isRearWheelDrive);
+		}
 		definition.motorized.isFrontWheelDrive = false;
 		definition.motorized.isRearWheelDrive = false;
 		
@@ -714,7 +716,9 @@ public final class LegacyCompatSystem{
     			}
     		}
 		}
-		performPartSlotListingLegacyCompats(definition.parts, false, false);
+		if(definition.parts != null) {
+		    performPartSlotListingLegacyCompats(definition.parts, false, false);
+		}
 		
 		if(definition.rendering != null){
 			try{
@@ -1662,7 +1666,9 @@ public final class LegacyCompatSystem{
 	                
 	                //Add interactable variable to block interaction based on part present.
 	                //Then combine this with existing IVs since they should inherit from the "parent".
-	                additionalDef.interactableVariables = new ArrayList<List<String>>();
+	                if(additionalDef.interactableVariables == null) {
+	                    additionalDef.interactableVariables = new ArrayList<List<String>>();
+	                }
 	                List<String> presenceList = new ArrayList<String>();
 	                presenceList.add("part_present_" + (i+1));
 	                additionalDef.interactableVariables.add(presenceList);

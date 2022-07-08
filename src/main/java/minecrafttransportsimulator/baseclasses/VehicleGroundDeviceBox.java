@@ -62,8 +62,8 @@ public class VehicleGroundDeviceBox{
 				if(partOn != null){
 				    Point3D relativePosition = partOn.position.copy().subtract(partOn.vehicleOn.position).reOrigin(partOn.vehicleOn.orientation);
 					boxFront = relativePosition.z > 0;
-					boxLeft = relativePosition.x >= 0;
-					boxRight = relativePosition.x <= 0;
+					boxLeft = relativePosition.x >= -0.001;
+					boxRight = relativePosition.x <= 0.001;
 				}else{
 					boxFront = box.localCenter.z > 0;
 					boxLeft = box.localCenter.x >= 0;
@@ -96,7 +96,7 @@ public class VehicleGroundDeviceBox{
 					//This ensures we don't roll to try and align a center point.
 				    Point3D relativePosition = part.position.copy().subtract(part.vehicleOn.position).reOrigin(part.vehicleOn.orientation);
 					if(isFront && relativePosition.z > 0){
-						if(isLeft && relativePosition.x >= 0){
+						if(isLeft && relativePosition.x >= -0.001){
 							groundDevices.add((PartGroundDevice) part);
 							if(part.definition.ground.isWheel || part.definition.ground.isTread){
 								canRollOnGround = true;
@@ -104,7 +104,7 @@ public class VehicleGroundDeviceBox{
 							if(part.definition.ground.canFloat){
 								liquidDevices.add((PartGroundDevice) part);
 							}
-						}else if(!isLeft && relativePosition.x <= 0){
+						}else if(!isLeft && relativePosition.x <= 0.001){
 							groundDevices.add((PartGroundDevice) part);
 							if(part.definition.ground.isWheel || part.definition.ground.isTread){
 								canRollOnGround = true;
@@ -114,7 +114,7 @@ public class VehicleGroundDeviceBox{
 							}
 						}
 					}else if(!isFront && relativePosition.z <= 0){
-						if(isLeft && relativePosition.x >= 0){
+						if(isLeft && relativePosition.x >= -0.001){
 							groundDevices.add((PartGroundDevice) part);
 							if(part.definition.ground.isWheel || part.definition.ground.isTread){
 								canRollOnGround = true;
@@ -122,7 +122,7 @@ public class VehicleGroundDeviceBox{
 							if(part.definition.ground.canFloat){
 								liquidDevices.add((PartGroundDevice) part);
 							}
-						}else if(!isLeft && relativePosition.x <= 0){
+						}else if(!isLeft && relativePosition.x <= 0.001){
 							groundDevices.add((PartGroundDevice) part);
 							if(part.definition.ground.isWheel || part.definition.ground.isTread){
 								canRollOnGround = true;

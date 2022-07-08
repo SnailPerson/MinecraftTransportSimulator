@@ -116,8 +116,8 @@ public final class PartSeat extends APart{
     }
     
     @Override
-    protected void updateBoxLists(){
-        super.updateBoxLists();
+    protected void updateEncompassingBoxLists(){
+        super.updateEncompassingBoxLists();
         
         //Don't have any interaction boxes if we are on a client and the player is sitting in us.
         //This keeps us from clicking our own seat when we want to click other things.
@@ -154,7 +154,7 @@ public final class PartSeat extends APart{
     @Override
     public boolean setRider(IWrapperEntity rider, boolean facesForwards){
         if(super.setRider(rider, facesForwards)){
-            boolean clientRiderOnVehicle = vehicleOn != null && world.isClient() && InterfaceManager.clientInterface.getClientPlayer() == rider;
+            boolean clientRiderOnVehicle = vehicleOn != null && world.isClient() && InterfaceManager.clientInterface.getClientPlayer().equals(rider);
             
             if(clientRiderOnVehicle && placementDefinition.isController) {
                 //Open the HUD.  This will have been closed in the remove call.
@@ -169,7 +169,7 @@ public final class PartSeat extends APart{
                         InterfaceManager.packetInterface.sendToServer(new PacketPartEngine(engine, Signal.AS_ON));
                     }
                     if(vehicleOn.parkingBrakeOn){
-                        InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableToggle(this, AEntityVehicleD_Moving.PARKINGBRAKE_VARIABLE));
+                        InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableToggle(vehicleOn, AEntityVehicleD_Moving.PARKINGBRAKE_VARIABLE));
                     }
                 }
             }
@@ -186,7 +186,7 @@ public final class PartSeat extends APart{
     
     @Override
     public void removeRider(){
-        boolean clientRiderOnVehicle = vehicleOn != null && world.isClient() && InterfaceManager.clientInterface.getClientPlayer() == rider;
+        boolean clientRiderOnVehicle = vehicleOn != null && world.isClient() && InterfaceManager.clientInterface.getClientPlayer().equals(rider);
         
         if(clientRiderOnVehicle){
             //Client player is the one that left the vehicle.  Make sure they don't have their mouse locked or a GUI open.
@@ -217,9 +217,9 @@ public final class PartSeat extends APart{
                             InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableToggle(engine, PartEngine.ELECTRIC_STARTER_VARIABLE));
                         }
                     }
-                    InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableSet(this, AEntityVehicleD_Moving.BRAKE_VARIABLE, 0));
+                    InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableSet(vehicleOn, AEntityVehicleD_Moving.BRAKE_VARIABLE, 0));
                     if(!vehicleOn.parkingBrakeOn){
-                        InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableToggle(this, AEntityVehicleD_Moving.PARKINGBRAKE_VARIABLE));
+                        InterfaceManager.packetInterface.sendToServer(new PacketEntityVariableToggle(vehicleOn, AEntityVehicleD_Moving.PARKINGBRAKE_VARIABLE));
                     }
                 }
             }

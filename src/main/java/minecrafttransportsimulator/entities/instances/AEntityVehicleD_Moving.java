@@ -50,6 +50,7 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 	public static final double MAX_BRAKE = 1D;
 	
 	//Internal states.
+	private boolean groundDeviceChangedLastTick = false;
 	public boolean goingInReverse;
 	public boolean slipping;
 	public boolean skidSteerActive;
@@ -184,13 +185,6 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 		brake = getVariable(BRAKE_VARIABLE);
 		parkingBrakeOn = isVariableActive(PARKINGBRAKE_VARIABLE);
 		
-		//Update our GDB members if any of our ground devices don't have the same total offset as placement.
-		//This is required to move the GDBs if the GDs move.
-		world.beginProfiling("GroundDevices", true);
-		if(ticksExisted == 1){
-			groundDeviceCollective.updateBounds();
-		}
-		
 		//Now do update calculations and logic.
 		if(!ConfigSystem.settings.general.noclipVehicles.value || groundDeviceCollective.isReady()){
 			world.beginProfiling("GroundForces", false);
@@ -212,25 +206,27 @@ abstract class AEntityVehicleD_Moving extends AEntityVehicleC_Colliding{
 	@Override
 	public void addPart(APart part, boolean sendPacket){
 		super.addPart(part, sendPacket);
-		groundDeviceCollective.updateMembers();
-		groundDeviceCollective.updateBounds();
+		if(part instanceof PartGroundDevice) {
+		    groundDeviceChangedLastTick = true;
+		}
 	}
 	
 	@Override
 	public void removePart(APart part, Iterator<APart> iterator){
 		super.removePart(part, iterator);
-		groundDeviceCollective.updateMembers();
-		groundDeviceCollective.updateBounds();
+		if(part instanceof PartGroundDevice) {
+            groundDeviceChangedLastTick = true;
+        }
 	}
 	
 	@Override
-	protected void updateBoxLists(){
-		super.updateBoxLists();
-		if(ticksExisted == 1){
-			//Need to do initial GDB updates.
+	protected void updateEncompassingBoxLists(){
+		super.updateEncompassingBoxLists();
+		if(ticksExisted == 1 || groundDeviceChangedLastTick){
 			groundDeviceCollective.updateMembers();
 			groundDeviceCollective.updateBounds();
 			groundDeviceCollective.updateCollisions();
+			groundDeviceChangedLastTick = false;
 		}
 	}
 	

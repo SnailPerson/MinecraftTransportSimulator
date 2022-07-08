@@ -164,8 +164,8 @@ public abstract class AEntityE_Interactable<JSONDefinition extends AJSONInteract
 	}
 	
 	@Override
-	protected void initializeDefinition(){
-		super.initializeDefinition();
+	protected void initializeAnimations(){
+		super.initializeAnimations();
 		//Create collision boxes.
 		if(definition.collisionGroups != null){
 			definitionCollisionBoxes.clear();

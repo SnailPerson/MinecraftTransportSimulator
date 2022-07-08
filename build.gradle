@@ -1,31 +1,26 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-				//maven { url = "https://repo.spongepowered.org/maven" }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-				//classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 
 //Apply plugins
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
-//apply plugin: 'org.spongepowered.mixin'
+
 
 //Set file name.
-version = "1.12.2-21.3.0-BETA2"
+version = "1.12.2-21.2.0"
 group= "minecrafttransportsimulator"
 archivesBaseName = "Immersive Vehicles"
 
 //Options for Java version to compile to.
-//java.toolchain.languageVersion = JavaLanguageVersion.of(8)
-//Don't need these with toolchain?
-sourceCompatibility = targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 compileJava {
-	sourceCompatibility = targetCompatibility = '1.8'
 	options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
 }
 
@@ -52,14 +47,13 @@ minecraft {
 
 repositories {
   maven { url = 'https://mvnrepository.com/artifact/org.jcraft/jorbis'}
-  //Location of the maven that hosts JEI files
 	maven {url = "https://dvs1.progwml6.com/files/maven/"}
 }
 
 //Configuration that holds jars to include in the jar
 configurations {
     embed
-    compile.extendsFrom(embed)
+    compileOnly.extendsFrom(embed)
 }
 
 //Specify dependencies.
@@ -68,8 +62,8 @@ dependencies {
   minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
 
 	//Set sound code bits as embeds so they are included into the jar.
-  embed(group: 'com.googlecode.soundlibs', name: 'jlayer', version: '1.0.1.4')
-	embed(group: 'org.jcraft', name: 'jorbis', version: '0.0.17')
+  embed fg.deobf("com.googlecode.soundlibs:jlayer:1.0.1.4")
+	embed fg.deobf("org.jcraft:jorbis:0.0.17")
 	
 	//Compile against the JEI API but do not include it at runtime
   compileOnly fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302:api")
@@ -77,20 +71,7 @@ dependencies {
 	//Disabled as Access Transformers don't work on FG 3.0 runtimes despite them saying they do.
 	//Not a huge issue, as it just prevents using JEI in-dev, and we already have it working so don't really need to test.
   //runtimeOnly fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
-	
-	//Embed mixins into the code.
-	//embed('org.spongepowered:mixin:0.8.5')
-	
-	//Apply Mixin AP ForgeGradle.
-	//annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
-
-//Set mixin properties.
-//Note, createSrgToMcp and createMcpToSrg tasks need to be run before this.
-//mixin {
-  //add sourceSets.main, "mts.refmap.json"
-	//config "mts.mixins.json"
-//}
 
 //Here is where we zip up all embeds and add them to our jar.
 jar {
@@ -101,3 +82,7 @@ jar {
 
 //Now compile the mod.
 jar.finalizedBy('reobfJar') 
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}

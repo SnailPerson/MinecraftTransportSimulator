@@ -1,7 +1,6 @@
 package minecrafttransportsimulator.entities.instances;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import minecrafttransportsimulator.baseclasses.BoundingBox;
@@ -79,24 +78,32 @@ public class PartPropeller extends APart{
 		if(isActive){
     		boolean increasePitch = false;
     		boolean decreasePitch = false;
-    		Iterator<PartEngine> iterator = connectedEngines.iterator();
-    		while(iterator.hasNext()) {
-    		    PartEngine connectedEngine = iterator.next();
-                if(!connectedEngine.isValid) {
-                    iterator.remove();
-                    continue;
-                }
-                if(connectedEngine.running) {
-                    double engineDrivenRPM = connectedEngine.rpm/connectedEngine.propellerGearboxRatio;
-                    if(engineDrivenRPM > currentRPM) {
-                        engineDrivenRPM = currentRPM;
-                        if(definition.propeller.isDynamicPitch){
-                            if(currentPitch > MIN_DYNAMIC_PITCH) {
-                                decreasePitch = connectedEngine.rpm < connectedEngine.definition.engine.maxSafeRPM*0.60;
-                            }else if(currentPitch < definition.propeller.pitch) {
-                                increasePitch = connectedEngine.rpm > connectedEngine.definition.engine.maxSafeRPM*0.85;
-                            }
-                        }
+    		
+    		//If we have an engine connected, adjust speed and pitch to it.
+    		if(!connectedEngines.isEmpty()) {
+        		//Get engine with highest running RPM, or highest total RPM if none are running.
+        		double highestPossibleRPM = 0;
+                double highestRunningRPM = 0;
+                PartEngine currentConnectedEngine = null;
+        		for(PartEngine connectedEngine : connectedEngines) {
+        		    double engineDrivenRPM = connectedEngine.rpm/connectedEngine.propellerGearboxRatio;
+        		    if(highestRunningRPM == 0 && engineDrivenRPM > highestPossibleRPM) {
+        		        highestPossibleRPM = engineDrivenRPM;
+        		        currentConnectedEngine = connectedEngine;
+        		    }
+        		    if(connectedEngine.running && engineDrivenRPM > highestRunningRPM) {
+    		            highestRunningRPM = engineDrivenRPM;
+    		            currentConnectedEngine = connectedEngine;
+        		    }
+        		}
+        		currentRPM = highestRunningRPM > 0 ? highestRunningRPM : highestPossibleRPM;
+        		
+        		//Ensure we don't over-speed the engine if we are a dynamic propeller by requesting a pitch adjustment later.
+        		if(definition.propeller.isDynamicPitch){
+                    if(currentPitch > MIN_DYNAMIC_PITCH) {
+                        decreasePitch = currentConnectedEngine.rpm < currentConnectedEngine.definition.engine.maxSafeRPM*0.60;
+                    }else if(currentPitch < definition.propeller.pitch) {
+                        increasePitch = currentConnectedEngine.rpm > currentConnectedEngine.definition.engine.maxSafeRPM*0.85;
                     }
                 }
     		}
@@ -111,13 +118,9 @@ public class PartPropeller extends APart{
     					++currentPitch;
     				}
     			}else if(definition.propeller.isDynamicPitch){
-    				if(vehicleOn.reverseThrust && currentPitch > -MIN_DYNAMIC_PITCH){
+    				if(decreasePitch || (vehicleOn.reverseThrust && currentPitch > -MIN_DYNAMIC_PITCH)){
     					--currentPitch;
-    				}else if(!vehicleOn.reverseThrust && currentPitch < MIN_DYNAMIC_PITCH){
-    					++currentPitch;
-    				}else if(decreasePitch){
-    					--currentPitch;
-    				}else if(increasePitch){
+    				}else if(increasePitch || (!vehicleOn.reverseThrust && currentPitch < MIN_DYNAMIC_PITCH)){
     					++currentPitch;
     				}
     			}

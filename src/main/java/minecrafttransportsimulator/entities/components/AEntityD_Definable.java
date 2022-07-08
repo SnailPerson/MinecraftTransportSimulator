@@ -56,7 +56,7 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 	/**The current subName for this entity.  Used to select which definition represents this entity.*/
 	public String subName;
 	
-	/**Variable for saving animation initialized state.  Is set true on the first tick, but may be set false afterwards to re-initialize animations.*/
+	/**Variable for saving animation definition initialized state.  Is set true on the first tick, but may be set false afterwards to re-initialize animation definitions.*/
 	public boolean animationsInitialized;
 	
 	/**Map containing text lines for saved text provided by this entity.**/
@@ -120,11 +120,6 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 				variables.put(variable, 1D);
 			}
 		}
-		if(definition.rendering != null && definition.rendering.constants != null){
-			for(String variable : definition.rendering.constants){
-				variables.put(variable, 1D);
-			}
-		}
 	}
 	
 	/**Constructor for un-synced entities.  Allows for specification of position/motion/angles.**/
@@ -132,22 +127,14 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 		super(world, position, motion, angles);
 		this.subName = creatingItem.subName;
 		this.definition = creatingItem.definition;
-		
-		//Add constants.
-		if(definition.rendering != null && definition.rendering.constants != null){
-			for(String variable : definition.rendering.constants){
-				variables.put(variable, 1D);
-			}
-		}
 	}
 	
 	@Override
 	public void update(){
 		super.update();
 		world.beginProfiling("EntityD_Level", true);
-		//Create animations if we haven't done so already.
 		if(!animationsInitialized){
-			initializeDefinition();
+			initializeAnimations();
 			animationsInitialized = true;
 		}
 		world.endProfiling();
@@ -174,7 +161,7 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 	 *  Called the first update tick after this entity is first constructed, and when the definition on it is reset via hotloading.
 	 *  This should create (and reset) all JSON clocks and other static objects that depend on the definition. 
 	 */
-	protected void initializeDefinition(){
+	protected void initializeAnimations(){
 		if(definition.rendering != null && definition.rendering.sounds != null){
 			allSoundDefs.clear();
 			soundActiveSwitchboxes.clear();
@@ -255,6 +242,13 @@ public abstract class AEntityD_Definable<JSONDefinition extends AJSONMultiModelP
 				}
 			}
 		}
+		
+        //Add constants.
+        if(definition.rendering != null && definition.rendering.constants != null){
+            for(String variable : definition.rendering.constants){
+                variables.put(variable, 1D);
+            }
+        }
 	}
 	
 	@Override

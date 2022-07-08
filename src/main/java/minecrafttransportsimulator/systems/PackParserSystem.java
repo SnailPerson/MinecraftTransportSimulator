@@ -474,6 +474,7 @@ public final class PackParserSystem{
 			}
     	}catch(Exception e){
     		InterfaceManager.coreInterface.logError(e.getMessage());
+    		e.printStackTrace();
     	}
     }
     

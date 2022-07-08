@@ -76,7 +76,7 @@ public class PacketVehicleInteract extends APacketEntityInteract<AEntityF_Multip
                     }else{
                         //Attempt to add a part.  Entity is responsible for callback packet here.
                         if(heldItem instanceof AItemPart){
-                            if(entity.addPartFromItem((AItemPart) heldItem, player, heldStack.getData(), entity.definition.parts.indexOf(slotEntry.getValue()), false) != null && !player.isCreative()){               
+                            if(entity.addPartFromItem((AItemPart) heldItem, player, heldStack.getData(), entity.definition.parts.indexOf(slotEntry.getValue())) != null && !player.isCreative()){               
                                 player.getInventory().removeFromSlot(player.getHotbarIndex(), 1);
                             }
                         }

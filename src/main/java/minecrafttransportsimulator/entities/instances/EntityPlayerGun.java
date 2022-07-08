@@ -166,7 +166,7 @@ public class EntityPlayerGun extends AEntityF_Multipart<JSONPlayerGun>{
 						ItemPartGun heldGun = (ItemPartGun) heldItem;
 						if(heldGun.definition.gun.handHeld){
 							gunStack = player.getHeldStack();
-							addPartFromItem(heldGun, player, gunStack.getData(), 0, false);
+							addPartFromItem(heldGun, player, gunStack.getData(), 0);
 							hotbarSelected = player.getHotbarIndex();
 						}
 					}

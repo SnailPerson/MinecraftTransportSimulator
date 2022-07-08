@@ -51,14 +51,6 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	 */
 	public final List<APart> partsInSlots = new ArrayList<APart>();
 	
-	   
-    /**List for parts loaded from NBT.  We can't add these parts on construction as we'd error out
-     * due to the potential of various sub-class variables not being ready at construction time.  To compensate, 
-     * we add the parts we wish to add to this list.  Post-construction these will be added to this entity, preventing NPEs.
-     * If you want to add parts to the entity in part constructors, they MUST be in this list.
-     */
-    public final List<APart> partsFromNBT = new ArrayList<APart>();
-	
 	/**List of block collision boxes, with all part block collision boxes included.**/
 	public final List<BoundingBox> allBlockCollisionBoxes = new ArrayList<BoundingBox>();
 	
@@ -80,39 +72,11 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	
 	public AEntityF_Multipart(AWrapperWorld world, IWrapperPlayer placingPlayer, IWrapperNBT data){
 		super(world, placingPlayer, data);
-		//Init part lookup list and add parts.
-		for(int i=0; i<definition.parts.size(); ++i) {
-			partsInSlots.add(null);
-			//Use a try-catch for parts in case they've changed since this entity was last placed.
-            //Don't want crashes due to pack updates.
-            try{
-                IWrapperNBT partData = data.getData("part_" + i);
-                AItemPart partItem = PackParserSystem.getItem(partData.getString("packID"), partData.getString("systemName"), partData.getString("subName"));
-                int partSlot = partData.getInteger("slot");
-                //TODO remove this a few versions down the line.
-                Point3D partOffset = partData.getPoint3d("offset");
-                if(!partOffset.isZero()) {
-                    for(int j=0; j<definition.parts.size(); ++j) {
-                        JSONPartDefinition partDef = definition.parts.get(j);
-                        if(partDef.pos.equals(partOffset)) {
-                            partSlot = j;
-                            break;
-                        }
-                    }
-                }
-                addPartFromItem(partItem, placingPlayer, partData, partSlot, true);
-            }catch(Exception e){
-                InterfaceManager.coreInterface.logError("Could not load part from NBT.  Did you un-install a pack?");
-            }
-		}
-		
-		//Create the initial boxes and slots.
-		recalculatePartSlots();
 	}
 	
 	@Override
-	protected void initializeDefinition(){
-    	super.initializeDefinition();
+	protected void initializeAnimations(){
+    	super.initializeAnimations();
     	parts.forEach(part -> {
     		part.placementDefinition = definition.parts.get(part.placementSlot);
     		part.animationsInitialized = false;
@@ -121,14 +85,6 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	
 	@Override
 	public void update(){
-		//If we have any NBT parts, add them now.
-		if(!partsFromNBT.isEmpty()){
-			for(APart part : partsFromNBT){
-				addPart(part, false);
-			}
-			partsFromNBT.clear();
-		}
-		
 		//Need to do this before updating as these require knowledge of prior states.
 		//If we call super, then it will overwrite the prior state.
 		//We update both our variables and our part variables here.
@@ -264,10 +220,18 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 			//Update all-box lists now that all parts are updated.
 			//If we don't do this, then the box size might get de-synced.
 			world.beginProfiling("BoxAlignment_" + allInteractionBoxes.size(), true);
-			updateBoxLists();
+			updateEncompassingBoxLists();
 			world.endProfiling();
 		}
 	}
+	
+	@Override
+    protected void updateCollisionBoxes(){
+	    super.updateCollisionBoxes();
+	    
+        //Add part slot boxes to interaction boxes since we can interact with those.
+        interactionBoxes.addAll(activePartSlotBoxes.keySet());
+    }
 	
 	@Override
 	public double getRawVariableValue(String variable, float partialTicks){
@@ -347,6 +311,56 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	}
     
     /**
+     * Called to add parts from NBT.  This cannot be done during construction, as this method adds sub-parts
+     * defined in this multipart's definition.  If this was done in the constructor, and those sub parts
+     * depended on some property that was present in the extended constructor of this multipart, then the
+     * sub-parts wouldn't have all the info they needed.  As such, this method should be called only after
+     * this multipart exists in the world.  And, if it is a part, it has been added to the multipart it is a part of.
+     */
+    public void addPartsPostAddition(IWrapperPlayer placingPlayer, IWrapperNBT data){
+        //Init part lookup list and add parts.
+        if(definition.parts != null) {
+            //Need to init slots first, just in case we reference them on sub-part linking logic.
+            for(int i=0; i<definition.parts.size(); ++i) {
+                partsInSlots.add(null);
+            }
+            
+            for(int i=0; i<definition.parts.size(); ++i) {
+                //Use a try-catch for parts in case they've changed since this entity was last placed.
+                //Don't want crashes due to pack updates.
+                try{
+                    IWrapperNBT partData = data.getData("part_" + i);
+                    if(partData != null) {
+                        AItemPart partItem = PackParserSystem.getItem(partData.getString("packID"), partData.getString("systemName"), partData.getString("subName"));
+                       
+                        //TODO remove this a few versions down the line.
+                        int partSlot = i;
+                        Point3D partOffset = partData.getPoint3d("offset");
+                        if(!partOffset.isZero()) {
+                            for(int j=0; j<definition.parts.size(); ++j) {
+                                JSONPartDefinition partDef = definition.parts.get(j);
+                                if(partDef.pos.equals(partOffset)) {
+                                    partSlot = j;
+                                    break;
+                                }
+                            }
+                        }
+                        //End todo
+                        
+                        addPartFromItem(partItem, placingPlayer, partData, partSlot);
+                    }
+                }catch(Exception e){
+                    InterfaceManager.coreInterface.logError("Could not load part from NBT.  Did you un-install a pack?");
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        //Create the initial boxes and slots.
+        recalculatePartSlots();
+    }
+    
+    /**
 	 * Adds the passed-part to this entity.  This method will check at the passed-in point
 	 * if the item-based part can go to this entity.  If so, it is constructed and added,
 	 * and a packet is sent to all clients to inform them of this change.  Returns true
@@ -355,27 +369,22 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	 * prevent calling the lists, maps, and other systems that aren't set up yet.
 	 * This method returns the part if it was added, null if it wasn't.
 	 */
-    public APart addPartFromItem(AItemPart partItem, IWrapperPlayer playerAdding, IWrapperNBT partData, int slotIndex, boolean addedDuringConstruction){
+    public APart addPartFromItem(AItemPart partItem, IWrapperPlayer playerAdding, IWrapperNBT partData, int slotIndex){
     	JSONPartDefinition newPartDef = definition.parts.get(slotIndex);
 		if(partsInSlots.get(slotIndex) == null && partItem.isPartValidForPackDef(newPartDef, subName, true)){
 			//Part is not already present, and is valid, add it.
 			partItem.populateDefaultData(partData);
-			APart partToAdd = partItem.createPart(this, playerAdding, newPartDef, partData); 
-			if(addedDuringConstruction){
-    			partsFromNBT.add(partToAdd);
-    		}else{
-    			//Need to know if we are a new part or not.
-    			boolean newPart = partData == null || partData.getString("uniqueUUID").isEmpty();
-    			
-    			//Now add the part as all instruments and variables are on it.
-    			addPart(partToAdd, true);
-				
-				//Add default parts.  We need to do this after we send a packet so our slots are valid.
-				//Need to make sure to convert the part placement defs to the right type as they're offset.
-				if(partToAdd.definition.parts != null){
-				    partToAdd.definition.parts.forEach(subPartPack -> partToAdd.addDefaultPart(subPartPack, playerAdding, partToAdd.definition, addedDuringConstruction, !newPart));
-				}
-    		}
+			APart partToAdd = partItem.createPart(this, playerAdding, newPartDef, partData);
+			addPart(partToAdd, true);
+			partToAdd.addPartsPostAddition(playerAdding, partData);
+			
+			//Add default parts.  We need to do this after we actually create this part so its slots are valid.
+            //We also need to know if we it is a new part or not, since that allows non-permanent default parts to be added.
+            if(partToAdd.definition.parts != null){
+                boolean newPart = partData == null || partData.getString("uniqueUUID").isEmpty();
+                partToAdd.definition.parts.forEach(subPartPack -> partToAdd.addDefaultPart(subPartPack, playerAdding, partToAdd.definition, !newPart));
+            }
+            
 			return partToAdd;
 		}else {
 			return null;
@@ -403,7 +412,7 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 		
 		//Let parts know a change was made,  This has to go through the top-level entity to filer down.
 		AEntityF_Multipart<?> masterEntity = this;
-		while(!(masterEntity instanceof APart)) {
+		while(masterEntity instanceof APart) {
 		    masterEntity = ((APart) masterEntity).entityOn;
 		}
 		masterEntity.parts.forEach(part2 -> part2.onPartChange());
@@ -431,8 +440,6 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 			if(!world.isClient()){
 				InterfaceManager.packetInterface.sendToAllClients(new PacketPartChange(this, part.placementSlot));
 			}
-		}else if(partsFromNBT.contains(part)){
-			partsFromNBT.remove(part);
 		}
 		
 		//Recalculate slots.
@@ -440,7 +447,7 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 		
 		//Let parts know a change was made,  This has to go through the top-level entity to filer down.
         AEntityF_Multipart<?> masterEntity = this;
-        while(!(masterEntity instanceof APart)) {
+        while(masterEntity instanceof APart) {
             masterEntity = ((APart) masterEntity).entityOn;
         }
         masterEntity.parts.forEach(part2 -> part2.onPartChange());
@@ -473,21 +480,21 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	 * The savedParent flag is to let this method add only default permanent parts, as they get
 	 * removed with the part when wrenched, and added back when placed again, and don't save their states.
 	 */
-	public void addDefaultPart(JSONPartDefinition partDef, IWrapperPlayer playerAdding, AJSONPartProvider providingDef, boolean addedDuringConstruction, boolean savedParent){
+	public void addDefaultPart(JSONPartDefinition partDef, IWrapperPlayer playerAdding, AJSONPartProvider providingDef, boolean savedParent){
 		if(partDef.defaultPart != null && (!savedParent || partDef.isPermanent)){
 			try{
 				String partPackID = partDef.defaultPart.substring(0, partDef.defaultPart.indexOf(':'));
 				String partSystemName = partDef.defaultPart.substring(partDef.defaultPart.indexOf(':') + 1);
 				int partSlot = definition.parts.indexOf(partDef);
 				try{
-					APart addedPart = addPartFromItem(PackParserSystem.getItem(partPackID, partSystemName), playerAdding, InterfaceManager.coreInterface.getNewNBTWrapper(), partSlot, addedDuringConstruction);
+					APart addedPart = addPartFromItem(PackParserSystem.getItem(partPackID, partSystemName), playerAdding, InterfaceManager.coreInterface.getNewNBTWrapper(), partSlot);
 					if(addedPart != null){
 						//Set the default tone for the part, if it requests one and we can provide one.
 						addedPart.updateTone(false);
 						
 						//Forward this call to the part for it to process its default parts.
 						if(addedPart.definition.parts != null) {
-						    addedPart.definition.parts.forEach(subpartDef -> addedPart.addDefaultPart(subpartDef, playerAdding, addedPart.definition, addedDuringConstruction, savedParent));
+						    addedPart.definition.parts.forEach(subpartDef -> addedPart.addDefaultPart(subpartDef, playerAdding, addedPart.definition, savedParent));
 						}
 					}
 				}catch(NullPointerException e){
@@ -506,6 +513,7 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	 */
 	private void recalculatePartSlots(){
 	    partSlotBoxes.clear();
+	    activePartSlotBoxes.clear();
 		for(int i=0; i<partsInSlots.size(); ++i) {
 		    if(partsInSlots.get(i) == null){
 		        JSONPartDefinition partDef = definition.parts.get(i);
@@ -516,10 +524,10 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	}
 	
 	/**
-	 * Call to re-create the lists of the collision and interaction boxes.
+	 * Call to re-create the lists of the encompassing collision and interaction boxes.
 	 * This should be run every tick so we have up-to-date lists.
 	 */
-	protected void updateBoxLists(){
+	protected void updateEncompassingBoxLists(){
 		//Set active collision box, door box, and interaction box lists to current boxes.
 		allEntityCollisionBoxes.clear();
 		allEntityCollisionBoxes.addAll(entityCollisionBoxes);
@@ -625,22 +633,15 @@ public abstract class AEntityF_Multipart<JSONDefinition extends AJSONPartProvide
 	@Override
 	public IWrapperNBT save(IWrapperNBT data){
 		super.save(data);
-		List<APart> allParts = new ArrayList<APart>();
-		allParts.addAll(parts);
-		allParts.addAll(partsFromNBT);
-		int totalParts = 0;
-		for(APart part : allParts){
+		for(APart part : parts){
 			//Don't save the part if it's not valid or a fake part.
 			if(part.isValid && !part.isFake()){
 				IWrapperNBT partData = part.save(InterfaceManager.coreInterface.getNewNBTWrapper());
 				//We need to set some extra data here for the part to allow this entity to know where it went.
 				//This only gets set here during saving/loading, and is NOT returned in the item that comes from the part.
-				partData.setInteger("slot", part.placementSlot);
-				data.setData("part_" + totalParts, partData);
-				++totalParts;
+				data.setData("part_" + part.placementSlot, partData);
 			}
 		}
-		data.setInteger("totalParts", totalParts);
 		return data;
 	}
 }
