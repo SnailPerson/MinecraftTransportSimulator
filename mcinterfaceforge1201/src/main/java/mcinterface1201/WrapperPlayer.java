@@ -3,6 +3,8 @@ package mcinterface1201;
 import java.util.HashMap;
 import java.util.Map;
 
+import minecrafttransportsimulator.entities.components.AEntityB_Existing;
+import minecrafttransportsimulator.entities.instances.APart;
 import minecrafttransportsimulator.items.components.AItemBase;
 import minecrafttransportsimulator.items.instances.ItemItem;
 import minecrafttransportsimulator.jsondefs.JSONItem.ItemComponentType;
@@ -23,9 +25,12 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.level.LevelEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import minecrafttransportsimulator.systems.TemperatureModCompat;
 
 @EventBusSubscriber
 public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
@@ -166,6 +171,29 @@ public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
                 }
             };
         }, Component.literal("")));
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
+        if (event.player.level().isClientSide) {
+            return;
+        }
+        WrapperPlayer wrapper = WrapperPlayer.getWrapperFor(event.player);
+        boolean airConditioned = false;
+        if (wrapper != null) {
+            AEntityB_Existing riding = wrapper.getEntityRiding();
+            if (riding instanceof APart) {
+                APart part = (APart) riding;
+                if (part.vehicleOn != null && part.vehicleOn.definition.motorized != null && part.vehicleOn.definition.motorized.hasAirConditioning) {
+                    airConditioned = true;
+                }
+            }
+            TemperatureModCompat.setAirConditioned(wrapper, airConditioned);
+        }
+        TemperatureModCompat.applyToughAsNailsClemency1201(event.player);
     }
 
     /**

@@ -26,7 +26,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import minecrafttransportsimulator.systems.TemperatureModCompat;
 
 @EventBusSubscriber
 public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
@@ -170,6 +173,17 @@ public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
                 };
             }
         });
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
+        if (event.player.world.isRemote) {
+            return;
+        }
+        TemperatureModCompat.applyAirConditioningIfActive(event.player);
     }
 
     /**

@@ -1,0 +1,1509 @@
+Initialized native services in: /Users/adrianwedhorn/Documents/New project/.gradle/native
+Initialized jansi services in: /Users/adrianwedhorn/Documents/New project/.gradle/native
+To honour the JVM settings for this build a single-use Daemon process will be forked. See https://docs.gradle.org/7.5.1/userguide/gradle_daemon.html#sec:disabling_the_daemon.
+Starting process 'Gradle build daemon'. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/daemon/7.5.1 Command: /Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home/bin/java -Xss8m --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.invoke=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.base/java.nio.charset=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx4G -Dfile.encoding=UTF-8 -Duser.country=DE -Duser.language=de -Duser.variant -cp /Users/adrianwedhorn/Documents/New project/.gradle/wrapper/dists/gradle-7.5.1-bin/7jzzequgds1hbszbhq3npc5ng/gradle-7.5.1/lib/gradle-launcher-7.5.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 7.5.1
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 0.993 secs.
+The client will now receive all logging from the daemon (pid: 97524). The daemon log file: /Users/adrianwedhorn/Documents/New project/.gradle/daemon/7.5.1/daemon-97524.out.log
+Daemon will be stopped at the end of the build 
+Using 12 worker leases.
+Watching the file system is configured to be enabled if available
+Now considering [/Users/adrianwedhorn/Documents/New project] as hierarchies to watch
+File system watching is active
+Starting Build
+Skipping Kotlin DSL script compilation (Settings/TopLevel/stage1) as it is up-to-date.
+Settings evaluated using settings file '/Users/adrianwedhorn/Documents/New project/settings.gradle.kts'.
+Projects loaded. Root project using build file '/Users/adrianwedhorn/Documents/New project/build.gradle.kts'.
+Included projects: [root project 'Immersive Vehicles', project ':mccore', project ':mcinterfaceforge1122', project ':mcinterfaceforge1165', project ':mcinterfaceforge1182', project ':mcinterfaceforge1192', project ':mcinterfaceforge1201']
+
+> Configure project :
+Evaluating root project 'Immersive Vehicles' using build file '/Users/adrianwedhorn/Documents/New project/build.gradle.kts'.
+Caching disabled for Kotlin DSL plugin accessors for classpath '9167ebb25b7d64fece31556bc5d0e687' because:
+  Build cache is disabled
+Skipping Kotlin DSL plugin accessors for classpath '9167ebb25b7d64fece31556bc5d0e687' as it is up-to-date.
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage1) because:
+  Build cache is disabled
+Skipping Kotlin DSL script compilation (Project/TopLevel/stage1) as it is up-to-date.
+Using Kotlin Gradle Plugin gradle71 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Caching disabled for Kotlin DSL accessors for root project 'Immersive Vehicles' because:
+  Build cache is disabled
+Skipping Kotlin DSL accessors for root project 'Immersive Vehicles' as it is up-to-date.
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage2) because:
+  Build cache is disabled
+Skipping Kotlin DSL script compilation (Project/TopLevel/stage2) as it is up-to-date.
+
+> Configure project :mccore
+Evaluating project ':mccore' using build file '/Users/adrianwedhorn/Documents/New project/mccore/build.gradle'.
+
+> Configure project :mcinterfaceforge1122
+Evaluating project ':mcinterfaceforge1122' using build file '/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1122/build.gradle'.
+Downloading net.minecraftforge:forge:1.12.2-14.23.5.2860:userdev3
+Downloading net.minecraftforge:forge:1.12.2-14.23.5.2860:universal@jar
+Downloading net.minecraftforge:forge:1.12.2-14.23.5.2860:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.12.2-20200226.224830@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.12.2@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.12.2@zip
+
+> Configure project :mcinterfaceforge1165
+Evaluating project ':mcinterfaceforge1165' using build file '/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1165/build.gradle'.
+Creating reobfuscation task for JarJar task: jarJar
+MixinGradle is skipping eclipse integration, extension not found
+Downloading net.minecraftforge:forge:1.16.5-36.2.34:userdev
+Downloading net.minecraftforge:forge:1.16.5-36.2.34:universal@jar
+Downloading net.minecraftforge:forge:1.16.5-36.2.34:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5-20210115.111550@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5@zip
+Adding source set 'main' to mixin processor
+Not adding source set 'main' to mixin processor, sourceSet already added
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/daemon/7.5.1 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+
+> Configure project :mcinterfaceforge1182
+Evaluating project ':mcinterfaceforge1182' using build file '/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1182/build.gradle'.
+Creating reobfuscation task for JarJar task: jarJar
+MixinGradle did not locate the diffplug APT plugin, skipping eclipse task configuration
+Starting process 'command '/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/bin/java''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/.tmp/tmp-jvm13833693586165279004probe Command: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/bin/java -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/bin/java''
+Starting process 'command '/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home/bin/java''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/.tmp/tmp-jvm16840361237808006236probe Command: /Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home/bin/java -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home/bin/java''
+Starting process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/.tmp/tmp-jvm2475183871926131399probe Command: /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''
+Starting process 'command '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/.tmp/tmp-jvm7462487234491124421probe Command: /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -cp . JavaProbe
+Successfully started process 'command '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java''
+Starting process 'command '/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/bin/java''. Working directory: /Users/adrianwedhorn/Documents/New project/.gradle/.tmp/tmp-jvm8519207577795817941probe Command: /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/bin/java -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/bin/java''
+Downloading net.minecraftforge:forge:1.18.2-40.2.0:userdev
+Downloading net.minecraftforge:forge:1.18.2-40.2.0:universal@jar
+Downloading net.minecraftforge:forge:1.18.2-40.2.0:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2-20220404.173914@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2@zip
+Adding source set 'main' to mixin processor
+Not adding source set 'main' to mixin processor, sourceSet already added
+
+> Configure project :mcinterfaceforge1192
+Evaluating project ':mcinterfaceforge1192' using build file '/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build.gradle'.
+Creating reobfuscation task for JarJar task: jarJar
+MixinGradle did not locate the diffplug APT plugin, skipping eclipse task configuration
+Downloading net.minecraftforge:forge:1.19.2-43.4.0:userdev
+Downloading net.minecraftforge:forge:1.19.2-43.4.0:universal@jar
+Downloading net.minecraftforge:forge:1.19.2-43.4.0:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2-20220805.130853@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Adding source set 'main' to mixin processor
+Not adding source set 'main' to mixin processor, sourceSet already added
+
+> Configure project :mcinterfaceforge1201
+Evaluating project ':mcinterfaceforge1201' using build file '/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1201/build.gradle'.
+Creating reobfuscation task for JarJar task: jarJar
+MixinGradle did not locate the diffplug APT plugin, skipping eclipse task configuration
+Downloading net.minecraftforge:forge:1.20.1-47.1.47:userdev
+Downloading net.minecraftforge:forge:1.20.1-47.1.47:universal@jar
+Downloading net.minecraftforge:forge:1.20.1-47.1.47:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1-20230612.114412@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1@zip
+Adding source set 'main' to mixin processor
+Not adding source set 'main' to mixin processor, sourceSet already added
+All projects evaluated.
+Downloading net.minecraft:mappings_stable:39-1.12@zip
+Downloading de.oceanlabs.mcp:mcp_stable:39-1.12@zip
+Downloading de.oceanlabs.mcp:mcp_stable:39-1.12@zip
+Downloading net.minecraft:mappings_stable:39-1.12@zip
+Downloading de.oceanlabs.mcp:mcp_stable:39-1.12@zip
+Downloading net.minecraft:mappings_parchment:2022.03.06-1.16.5@zip
+Downloading net.minecraft:client:1.16.5:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5@zip
+Downloading net.minecraft:mappings_parchment:2022.03.06-1.16.5@zip
+Downloading net.minecraft:client:1.16.5:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5@zip
+Downloading net.minecraft:mappings_parchment:2022.03.06-1.16.5@zip
+Downloading net.minecraftforge:forge:1.16.5-36.2.34:launcher
+Downloading net.minecraft:client:1.16.5:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.16.5@zip
+Downloading net.minecraft:mappings_parchment:2022.03.06-1.16.5@zip
+Downloading net.minecraft:mappings_parchment:2022.11.06-1.18.2@zip
+Downloading net.minecraft:client:1.18.2:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.06-1.18.2@zip
+Downloading net.minecraft:client:1.18.2:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.06-1.18.2@zip
+Downloading net.minecraft:client:1.18.2:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.18.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.06-1.18.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.27-1.19.2@zip
+Downloading net.minecraft:client:1.19.2:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.27-1.19.2@zip
+Downloading net.minecraft:client:1.19.2:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Downloading net.minecraft:client:1.19.2:mappings@txt
+Downloading net.minecraft:mappings_parchment:2022.11.27-1.19.2@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Downloading net.minecraft:mappings_parchment:2022.11.27-1.19.2@zip
+Downloading net.minecraft:mappings_parchment:2023.09.03-1.20.1@zip
+Downloading net.minecraft:client:1.20.1:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1@zip
+Downloading net.minecraft:mappings_parchment:2023.09.03-1.20.1@zip
+Downloading net.minecraft:client:1.20.1:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1@zip
+Downloading net.minecraft:mappings_parchment:2023.09.03-1.20.1@zip
+Downloading net.minecraft:client:1.20.1:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.20.1@zip
+Downloading net.minecraft:mappings_parchment:2023.09.03-1.20.1@zip
+Task name matched 'buildForge1192'
+Selected primary task 'buildForge1192' from project :
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Tasks to be executed: [task ':mccore:compileJava', task ':mccore:processResources', task ':mccore:classes', task ':mccore:jar', task ':mcinterfaceforge1192:downloadMcpConfig', task ':mcinterfaceforge1192:extractSrg', task ':mcinterfaceforge1192:createMcpToSrg', task ':mcinterfaceforge1192:compileJava', task ':mcinterfaceforge1192:addMixinsToJar', task ':mcinterfaceforge1192:processResources', task ':mcinterfaceforge1192:classes', task ':mcinterfaceforge1192:jar', task ':mcinterfaceforge1192:configureReobfTaskForReobfJar', task ':mcinterfaceforge1192:reobfJar', task ':mcinterfaceforge1192:configureReobfTaskForReobfJarJar', task ':mcinterfaceforge1192:addMixinsToJarJar', task ':mcinterfaceforge1192:jarJar', task ':mcinterfaceforge1192:reobfJarJar', task ':mcinterfaceforge1192:assemble', task ':mcinterfaceforge1192:compileTestJava', task ':mcinterfaceforge1192:processTestResources', task ':mcinterfaceforge1192:testClasses', task ':mcinterfaceforge1192:test', task ':mcinterfaceforge1192:check', task ':mcinterfaceforge1192:build', task ':buildForge1192']
+Tasks that were excluded: []
+Resolve mutations for :mccore:compileJava (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mccore:compileJava (Thread[Execution worker,5,main]) completed. Took 0.013 secs.
+:mccore:compileJava (Thread[included builds,5,main]) started.
+
+> Task :mccore:compileJava UP-TO-DATE
+Watching 1 directory hierarchies to track changes
+Caching disabled for task ':mccore:compileJava' because:
+  Build cache is disabled
+Skipping task ':mccore:compileJava' as it is up-to-date.
+:mccore:compileJava (Thread[included builds,5,main]) completed. Took 0.176 secs.
+Resolve mutations for :mccore:processResources (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mccore:processResources (Thread[Execution worker,5,main]) completed. Took 0.002 secs.
+:mccore:processResources (Thread[included builds,5,main]) started.
+
+> Task :mccore:processResources UP-TO-DATE
+Caching disabled for task ':mccore:processResources' because:
+  Build cache is disabled
+Skipping task ':mccore:processResources' as it is up-to-date.
+:mccore:processResources (Thread[included builds,5,main]) completed. Took 0.042 secs.
+Resolve mutations for :mccore:classes (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mccore:classes (Thread[Execution worker,5,main]) completed. Took 0.0 secs.
+:mccore:classes (Thread[included builds,5,main]) started.
+
+> Task :mccore:classes UP-TO-DATE
+Skipping task ':mccore:classes' as it has no actions.
+:mccore:classes (Thread[included builds,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :mccore:jar (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mccore:jar (Thread[Execution worker,5,main]) completed. Took 0.001 secs.
+:mccore:jar (Thread[included builds,5,main]) started.
+
+> Task :mccore:jar UP-TO-DATE
+Caching disabled for task ':mccore:jar' because:
+  Build cache is disabled
+Skipping task ':mccore:jar' as it is up-to-date.
+:mccore:jar (Thread[included builds,5,main]) completed. Took 0.03 secs.
+Resolve mutations for :mcinterfaceforge1192:downloadMcpConfig (Thread[Execution worker,5,main]) started.
+work action resolve Immersive Vehicles.jar (project :mccore) (Thread[Execution worker Thread 8,5,main]) started.
+work action null (Thread[Execution worker Thread 8,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :mcinterfaceforge1192:downloadMcpConfig (Thread[Execution worker,5,main]) completed. Took 0.001 secs.
+:mcinterfaceforge1192:downloadMcpConfig (Thread[Execution worker Thread 8,5,main]) started.
+
+> Task :mcinterfaceforge1192:downloadMcpConfig
+Caching disabled for task ':mcinterfaceforge1192:downloadMcpConfig' because:
+  Build cache is disabled
+Task ':mcinterfaceforge1192:downloadMcpConfig' is not up-to-date because:
+  Task.upToDateWhen is false.
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2-20220805.130853@zip
+:mcinterfaceforge1192:downloadMcpConfig (Thread[Execution worker Thread 8,5,main]) completed. Took 0.038 secs.
+Resolve mutations for :mcinterfaceforge1192:extractSrg (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mcinterfaceforge1192:extractSrg (Thread[Execution worker,5,main]) completed. Took 0.004 secs.
+:mcinterfaceforge1192:extractSrg (Thread[Execution worker Thread 8,5,main]) started.
+
+> Task :mcinterfaceforge1192:extractSrg UP-TO-DATE
+Caching disabled for task ':mcinterfaceforge1192:extractSrg' because:
+  Build cache is disabled
+Skipping task ':mcinterfaceforge1192:extractSrg' as it is up-to-date.
+:mcinterfaceforge1192:extractSrg (Thread[Execution worker Thread 8,5,main]) completed. Took 0.004 secs.
+Resolve mutations for :mcinterfaceforge1192:createMcpToSrg (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mcinterfaceforge1192:createMcpToSrg (Thread[Execution worker,5,main]) completed. Took 0.001 secs.
+:mcinterfaceforge1192:createMcpToSrg (Thread[Execution worker Thread 8,5,main]) started.
+
+> Task :mcinterfaceforge1192:createMcpToSrg UP-TO-DATE
+Caching disabled for task ':mcinterfaceforge1192:createMcpToSrg' because:
+  Build cache is disabled
+Skipping task ':mcinterfaceforge1192:createMcpToSrg' as it is up-to-date.
+:mcinterfaceforge1192:createMcpToSrg (Thread[Execution worker Thread 8,5,main]) completed. Took 0.002 secs.
+Resolve mutations for :mcinterfaceforge1192:compileJava (Thread[Execution worker,5,main]) started.
+Resolve mutations for :mcinterfaceforge1192:compileJava (Thread[Execution worker,5,main]) completed. Took 0.0 secs.
+:mcinterfaceforge1192:compileJava (Thread[Execution worker Thread 8,5,main]) started.
+
+> Task :mcinterfaceforge1192:compileJava
+Caching disabled for task ':mcinterfaceforge1192:compileJava' because:
+  Build cache is disabled
+Task ':mcinterfaceforge1192:compileJava' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':mcinterfaceforge1192:compileJava'.
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home'.
+Compiling with JDK Java compiler API.
+Note: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7.38)
+Note: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+Note: Loading searge mappings from /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/createMcpToSrg/output.tsrg
+Note: Writing refmap to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing refmap to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing searge composite mappings to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-mappings.tsrg
+Note: Writing refmap to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing refmap to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing searge composite mappings to /Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/build/tmp/compileJava/compileJava-mappings.tsrg
+/Users/adrianwedhorn/Documents/New project/mcinterfaceforge1192/src/main/java/mcinterface1192/WrapperPlayer.java:179: error: cannot find symbol
+        if (event.player.level().isClientSide) {
+                        ^
+  symbol:   method level()
+  location: variable player of type Player
+1 error
+
+> Task :mcinterfaceforge1192:compileJava FAILED
+:mcinterfaceforge1192:compileJava (Thread[Execution worker Thread 8,5,main]) completed. Took 4.78 secs.
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':mcinterfaceforge1192:compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':mcinterfaceforge1192:compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:142)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:140)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:69)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:327)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:307)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:420)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:342)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler error output for details.
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:56)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:39)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:97)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:51)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:37)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:51)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:37)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$1(JavaCompile.java:232)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:52)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:67)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:41)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$2.call(CompileJavaBuildOperationReportingCompiler.java:59)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$2.call(CompileJavaBuildOperationReportingCompiler.java:51)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:51)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:279)
+	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:146)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.IncrementalInputsTaskAction.doExecute(IncrementalInputsTaskAction.java:32)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.AbstractIncrementalTaskAction.execute(AbstractIncrementalTaskAction.java:25)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:236)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:221)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:204)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:187)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:165)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:89)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:40)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:53)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:50)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:50)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:40)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:51)
+	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:29)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.executeDelegateBroadcastingChanges(CaptureStateAfterExecutionStep.java:124)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:80)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:58)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:48)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:36)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:181)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:71)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:59)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:69)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:47)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:25)
+	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:36)
+	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:22)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:110)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:56)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:56)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:38)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:73)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:44)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:89)
+	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:50)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:114)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:57)
+	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:76)
+	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:50)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.executeWithNoEmptySources(SkipEmptyWorkStep.java:254)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.executeWithNoEmptySources(SkipEmptyWorkStep.java:209)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:88)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:32)
+	at org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:21)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:43)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:31)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:40)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:281)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:40)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:139)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:69)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:327)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:307)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:420)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:342)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+java.lang.StackOverflowError (no error message)
+
+* Try:
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Exception is:
+java.lang.StackOverflowError
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:153)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+	at org.gradle.execution.plan.CompositeNodeGroup.isCanCancel(CompositeNodeGroup.java:101)
+	at org.gradle.execution.plan.Node.isCanCancel(Node.java:232)
+	at org.gradle.execution.plan.FinalizerGroup.isCanCancel(FinalizerGroup.java:155)
+
+==============================================================================
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 22s
+7 actionable tasks: 2 executed, 5 up-to-date
+Watched directory hierarchies: [/Users/adrianwedhorn/Documents/New project]

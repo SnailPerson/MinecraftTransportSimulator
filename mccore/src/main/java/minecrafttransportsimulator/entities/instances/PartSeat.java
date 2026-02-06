@@ -32,6 +32,7 @@ import minecrafttransportsimulator.systems.ConfigSystem;
 import minecrafttransportsimulator.systems.ControlSystem;
 import minecrafttransportsimulator.systems.LanguageSystem;
 import minecrafttransportsimulator.systems.LanguageSystem.LanguageEntry;
+import minecrafttransportsimulator.systems.TemperatureModCompat;
 
 public final class PartSeat extends APart {
     public boolean canControlGuns;
@@ -208,6 +209,9 @@ public final class PartSeat extends APart {
                     });
                 });
             }
+            if (!world.isClient() && rider instanceof IWrapperPlayer && vehicleOn != null && vehicleOn.definition.motorized.hasAirConditioning) {
+                TemperatureModCompat.setAirConditioned((IWrapperPlayer) rider, true);
+            }
             return true;
         } else {
             return false;
@@ -276,6 +280,10 @@ public final class PartSeat extends APart {
             }
         }
 
+        if (!world.isClient() && rider instanceof IWrapperPlayer && vehicleOn != null && vehicleOn.definition.motorized.hasAirConditioning) {
+            TemperatureModCompat.setAirConditioned((IWrapperPlayer) rider, false);
+        }
+
         //If we, and we aren't changing seats to another of the same vehicle, handle things.
         if (!riderChangingSeats) {
             //Set the rider dismount position.
@@ -339,6 +347,9 @@ public final class PartSeat extends APart {
             //another player could be getting us to this logic point, thus we'd be making their inputs in the vehicle.
             if (world.isClient() && !InterfaceManager.clientInterface.isChatOpen() && riderIsClient) {
                 ControlSystem.controlMultipart(masterEntity, placementDefinition.isController);
+            }
+            if (!world.isClient() && rider instanceof IWrapperPlayer && vehicleOn != null && vehicleOn.definition.motorized.hasAirConditioning) {
+                TemperatureModCompat.setAirConditioned((IWrapperPlayer) rider, true);
             }
             return true;
         } else {

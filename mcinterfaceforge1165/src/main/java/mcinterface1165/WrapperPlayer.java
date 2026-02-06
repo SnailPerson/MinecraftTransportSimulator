@@ -23,9 +23,12 @@ import net.minecraft.util.HandSide;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import minecrafttransportsimulator.systems.TemperatureModCompat;
 
 @EventBusSubscriber
 public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
@@ -166,6 +169,17 @@ public class WrapperPlayer extends WrapperEntity implements IWrapperPlayer {
                 }
             };
         }, new StringTextComponent("")));
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
+        if (event.player.level.isClientSide) {
+            return;
+        }
+        TemperatureModCompat.applyAirConditioningIfActive(event.player);
     }
 
     /**

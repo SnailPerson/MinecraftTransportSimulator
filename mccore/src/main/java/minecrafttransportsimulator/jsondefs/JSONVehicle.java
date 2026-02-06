@@ -37,6 +37,9 @@ public class JSONVehicle extends AJSONPartProvider {
         @JSONDescription("Tells MTS that this vehicle does not have a roof.  This is used only for the SoundSystem and lets MTS know that sounds should be quieter when inside this vehicle.  This does not have an effect when in third-person, however, as the camera is considered outside of the vehicle so having a top or not does not matter.")
         public boolean hasOpenTop;
 
+        @JSONDescription("If true, this vehicle will provide climate control to seated players for supported temperature mods.")
+        public boolean hasAirConditioning;
+
         @JSONDescription("Make this true to allow your plane to come equipped with autopilot. Perhaps not the best thing to have on WWII fighters, but right at home on jet airliners. No, this won't work on cars.  This is MTS, not TMS (Tesla Motors Simulator).")
         public boolean hasAutopilot;
 
