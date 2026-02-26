@@ -59,17 +59,12 @@ public class InterfaceEventsEntityRendering {
                 //Camera adjustments occur backwards here.  Reverse order in the matrix.
                 //Also need to reverse sign of Y, since that's backwards in MC.
                 cameraAdjustedOrientation.convertToAngles();
-                if (InterfaceManager.clientInterface.getCameraMode() == CameraMode.THIRD_PERSON_INVERTED) {
-                    //Inverted third-person needs roll and pitch flipped due to the opposite perspective.
-                    //It also needs the camera rotated 180 in the Y to face the other direction.
-                    event.setRoll((float) -cameraAdjustedOrientation.angles.z);
-                    event.setPitch((float) -cameraAdjustedOrientation.angles.x);
-                    event.setYaw((float) (-cameraAdjustedOrientation.angles.y + 180));
-                } else {
-                    event.setRoll((float) cameraAdjustedOrientation.angles.z);
-                    event.setPitch((float) cameraAdjustedOrientation.angles.x);
-                    event.setYaw((float) -cameraAdjustedOrientation.angles.y);
-                }
+                //In MC 1.21, Camera.setup() applies its own thirdPersonReverse logic
+                //(yaw+180, -pitch, -roll) AFTER this event returns, so we must not
+                //pre-invert for THIRD_PERSON_INVERTED — MC handles that itself.
+                event.setRoll((float) cameraAdjustedOrientation.angles.z);
+                event.setPitch((float) cameraAdjustedOrientation.angles.x);
+                event.setYaw((float) -cameraAdjustedOrientation.angles.y);
                 //Flag that we adjusted the camera.  The CameraMixin will re-apply
                 //our position at the tail of Camera.setup(), since in MC 1.21
                 //setup() overwrites the position after this event returns.
