@@ -19,7 +19,7 @@
             "item": "minecraft:writable_book"
         },
         "e": {
-            "tag": "forge:fences/wooden"
+            "tag": "c:fences/wooden"
         }
     },
     "result": {

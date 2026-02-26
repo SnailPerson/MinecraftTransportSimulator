@@ -13,7 +13,7 @@
             "item": "minecraft:dispenser"
         },
         "c": {
-            "tag": "forge:ingots/iron"
+            "tag": "c:ingots/iron"
         },
         "d": {
             "item": "minecraft:stick"

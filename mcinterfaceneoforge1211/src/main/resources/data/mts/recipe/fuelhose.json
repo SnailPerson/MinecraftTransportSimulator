@@ -10,7 +10,7 @@
             "item": "minecraft:black_dye"
         },
         "b": {
-            "tag": "forge:ingots/iron"
+            "tag": "c:ingots/iron"
         },
         "c": {
             "item": "minecraft:leather"

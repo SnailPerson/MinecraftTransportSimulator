@@ -7,7 +7,7 @@
     ],
     "key": {
         "a": {
-            "tag": "forge:ingots/iron"
+            "tag": "c:ingots/iron"
         },
         "b": {
             "item": "minecraft:diamond"
@@ -16,7 +16,7 @@
             "item": "minecraft:anvil"
         },
         "d": {
-            "tag": "forge:storage_blocks/copper"
+            "tag": "c:storage_blocks/copper"
         }
     },
     "result": {

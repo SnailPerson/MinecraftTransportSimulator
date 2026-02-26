@@ -19,7 +19,7 @@
             "item": "mts:mts.fuelhose"
         },
         "e": {
-            "tag": "forge:ingots/iron"
+            "tag": "c:ingots/iron"
         }
     },
     "result": {
