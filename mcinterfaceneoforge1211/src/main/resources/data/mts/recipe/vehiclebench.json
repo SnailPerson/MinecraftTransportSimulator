@@ -23,6 +23,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.vehiclebench"
+        "id": "mts:mts.vehiclebench"
     }
 }

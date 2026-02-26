@@ -23,6 +23,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.instrumentbench"
+        "id": "mts:mts.instrumentbench"
     }
 }

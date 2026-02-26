@@ -20,6 +20,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.itembench"
+        "id": "mts:mts.itembench"
     }
 }

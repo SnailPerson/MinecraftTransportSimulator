@@ -20,6 +20,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.gunbench"
+        "id": "mts:mts.gunbench"
     }
 }

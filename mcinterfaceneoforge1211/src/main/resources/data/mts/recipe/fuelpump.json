@@ -23,6 +23,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.fuelpump"
+        "id": "mts:mts.fuelpump"
     }
 }

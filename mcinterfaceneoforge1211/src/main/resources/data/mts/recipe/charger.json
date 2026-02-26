@@ -23,6 +23,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.charger"
+        "id": "mts:mts.charger"
     }
 }

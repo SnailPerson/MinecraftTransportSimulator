@@ -29,6 +29,6 @@
         }
     },
     "result": {
-        "item": "mts:mts.partscanner"
+        "id": "mts:mts.partscanner"
     }
 }
