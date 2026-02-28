@@ -51,7 +51,7 @@ dependencies {
     // the runtime module path — they are already embedded as classes inside mccore's JAR.
     // Without this, JPMS sees duplicate packages (com.jcraft.jorbis etc.) in both the
     // mts module and the standalone jorbis module, causing a ResolutionException.
-    embed(project(":mccore")) {
+    embed(project(path: ":mccore", configuration: "relocated")) {
         transitive = false
     }
     compileOnly "mezz.jei:jei-${project.mc_version}-neoforge-api:${project.jei_version}"
