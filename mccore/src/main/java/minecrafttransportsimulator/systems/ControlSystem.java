@@ -213,7 +213,7 @@ public final class ControlSystem {
     }
 
     private static boolean requiresDismountConfirmation(PartSeat seat) {
-        double dismountSafetySpeed = ConfigSystem.settings.general.DismountSafteySpeed.value;
+        double dismountSafetySpeed = ConfigSystem.client.controlSettings.DismountSafteySpeed.value;
         return dismountSafetySpeed <= 0 || seat.vehicleOn.velocity * 20D > dismountSafetySpeed;
     }
 
