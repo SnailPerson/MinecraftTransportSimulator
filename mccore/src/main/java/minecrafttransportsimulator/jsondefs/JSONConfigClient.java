@@ -23,8 +23,8 @@ public class JSONConfigClient {
         public JSONConfigEntry<Boolean> fullHUD_1P = new JSONConfigEntry<>(false, "If true, the full-size HUD will render in 1st-person rather than the half-size HUD.");
         public JSONConfigEntry<Boolean> fullHUD_3P = new JSONConfigEntry<>(false, "If true, the full-size HUD will render in 3rd-person rather than the half-size HUD.");
 
-        public JSONConfigEntry<Boolean> transpHUD_1P = new JSONConfigEntry<>(false, "If true, the background textures for the HUD will not be rendered in 1st-person.");
-        public JSONConfigEntry<Boolean> transpHUD_3P = new JSONConfigEntry<>(false, "If true, the background textures for the HUD will not be rendered in 1st-person.");
+        public JSONConfigEntry<Boolean> transpHUD_1P = new JSONConfigEntry<>(true, "If true, the background textures for the HUD will not be rendered in 1st-person.");
+        public JSONConfigEntry<Boolean> transpHUD_3P = new JSONConfigEntry<>(true, "If true, the background textures for the HUD will not be rendered in 3rd-person.");
 
         public JSONConfigEntry<Boolean> renderWindows = new JSONConfigEntry<>(true, "Should the glass on windows be rendered on vehicles?");
         public JSONConfigEntry<Boolean> innerWindows = new JSONConfigEntry<>(false, "Should the glass on windows be rendered on the inside of the vehicle?  Note: if renderWindows is false, this config has no effect.");
