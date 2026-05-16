@@ -115,7 +115,7 @@ public abstract class AEntityB_Existing extends AEntityA_Base {
             this.position = data.getPoint3d("position");
             this.orientation = new RotationMatrix().setToAngles(data.getPoint3d("angles"));
             this.motion = data.getPoint3d("motion");
-            this.zoomLevel = data.hasKey("zoomLevel") ? Math.max(0, data.getInteger("zoomLevel")) : 0;
+            this.zoomLevel = data.getInteger("zoomLevel");
             this.cameraIndex = data.getInteger("cameraIndex");
             this.radioData = data.getData("radio");
         } else {
